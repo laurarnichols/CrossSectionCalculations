@@ -35,24 +35,3 @@ cp -r ${PSEUDODIR} ./
 module load Espresso/6.4
 mpiexec_mpt -n 1440 pw.x -nb 4 -nk 5 < ${INPUTFILE} > ${OUTPUTFILE}
 
-# Clean up  -----------------------------------------------------
-# archive your results
-# Using the "here document" syntax, create a job script
-# for archiving your data.
-cd ${JOBDIR}
-cat > archive_job.$$ <<END
-#!/bin/bash
-#PBS -l walltime=12:00:00
-#PBS -q transfer
-#PBS -A WPrAFSNW44943FRE
-#PBS -l select=1:ncpus=1
-#PBS -j oe
-#PBS -S /bin/bash
-cd ${JOBDIR}
-/usr/bin/rsh ${ARCHIVE_HOST} mkdir ${ARCHIVE_HOME}/${JOBID}
-/usr/bin/rcp -r ${JOBDIR} ${ARCHIVE_HOST}:${ARCHIVE_HOME}
-/usr/bin/rsh ${ARCHIVE_HOST} ls -l ${ARCHIVE_HOME}/${JOBID}
-END
-# Submit the archive job script.
-qsub archive_job.$$
-rm archive_job.$$
