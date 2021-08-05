@@ -31,7 +31,7 @@ cp -r ${PSEUDODIR} ./
 
 # Launching  ----------------------------------------------------
 # copy executable from $HOME and submit it
-#cp ${HOME}/my_prog.exe .
-module load Espresso/6.4
-mpiexec_mpt -n 1440 pw.x -nb 4 -nk 5 < ${INPUTFILE} > ${OUTPUTFILE}
+cp ${HOME}/q-e-qe-5.0.2/bin/pw.x ./
+#module load Espresso/6.4
+mpiexec_mpt -n 96 ./pw.x < ${INPUTFILE} > ${OUTPUTFILE}
 
