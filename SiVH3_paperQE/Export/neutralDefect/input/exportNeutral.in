@@ -1,0 +1,7 @@
+&inputpp
+  prefix = 'SiVH3',
+  outdir = './QEOutput',
+  !
+  exportDir = './output'
+  writeWFC = .true.
+/
