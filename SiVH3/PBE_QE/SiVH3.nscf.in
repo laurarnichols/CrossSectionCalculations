@@ -1,5 +1,5 @@
 &control
-  prefix = 'Si',
+  prefix = 'SiVH3',
   pseudo_dir = './pseudo',
   outdir = './output',
 
