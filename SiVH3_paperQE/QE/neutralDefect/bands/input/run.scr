@@ -2,21 +2,21 @@
 ## Required PBS Directives --------------------------------------
 #PBS -A WPrAFSNW44943FRE
 #PBS -q standard
-#PBS -l select=30:ncpus=48:mpiprocs=48
+#PBS -l select=2:ncpus=48:mpiprocs=48
 #PBS -l walltime=12:00:00
 #PBS -j oe
 
 ## Optional Directives ------------------------------------
-#PBS -N Si_scf
+#PBS -N SiVH3_nscf
 #PBS -j oe
 #PBS -M laura.r.nichols@vanderbilt.edu
 #PBS -m be
 
 # Environmental Setup
-INPUTDIR="${HOME}/SiVH3_HSE/QE/neutralPristine/hse/input"
-OUTPUTDIR="${HOME}/SiVH3_HSE/QE/neutralPristine/hse/output"
-RELAXOUTPUTDIR="${HOME}/SiVH3_HSE/QE/neutralPristine/relax/output"
-PSEUDODIR="${HOME}/SiVH3_HSE/QE/pseudo"
+INPUTDIR="${HOME}/SiVH3_paperQE/QE/neutralPristine/bands/input"
+OUTPUTDIR="${HOME}/SiVH3_paperQE/QE/neutralPristine/bands/output"
+RELAXOUTPUTDIR="${HOME}/SiVH3_paperQE/QE/neutralPristine/relax/output"
+PSEUDODIR="${HOME}/SiVH3_paperQE/QE/pseudo"
 INPUTFILE="./Si.scf.in"
 OUTPUTFILE="./Si.scf.out"
 
