@@ -14,7 +14,7 @@
 &system    
   ibrav=  0, celldm(1) = 30.7893077475, nat = 216, ntyp= 1,
   ecutwfc = 50.0, ! Original was 75.0; also ecutrho = 450.0
-  nbnd = 512, ! Original was 1000
+  nbnd = 512, ! Original was 1000; Edit this number to be a multiple of the number of cores per node for best efficiency
   occupations='smearing', smearing='gauss', degauss=0.001
   la2F = .true.
   nosym = .true.
