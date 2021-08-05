@@ -1,0 +1,19 @@
+&TME_Input
+ !
+ exportDirSD    = './exportNeutralDefect'  ! path to the export dir
+ exportDirPC    = './exportNeutralPristine'  ! path to the export dir
+ !
+ elementsPath   = './outputDir'      ! path to store outputs
+ !
+ iBandIinit  = 433         ! initial state initial band
+ iBandIfinal = 632         ! initial state final band
+ iBandFinit  = 432         ! final state initial band
+ iBandFfinal = 432         ! final state final band
+ !
+ !ki = 9                   ! initial k-point, if ki and kf are not set all k-points will be calculated
+ !kf = 1                   ! final k-point
+ !
+ calculateVfis = .true.   ! Set to .true. only if there is an incoming electron that will be captured in the system.
+ !
+ eBin = 0.050 ! eV
+/

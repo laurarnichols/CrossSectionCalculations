@@ -1,0 +1,58 @@
+#!/bin/bash
+## Required PBS Directives --------------------------------------
+#PBS -A WPrAFSNW44943FRE
+#PBS -q standard
+#PBS -l select=30:ncpus=48:mpiprocs=48
+#PBS -l walltime=12:00:00
+#PBS -j oe
+
+## Optional Directives ------------------------------------
+#PBS -N Si_scf
+#PBS -j oe
+#PBS -M laura.r.nichols@vanderbilt.edu
+#PBS -m be
+
+# Environmental Setup
+INPUTDIR="${HOME}/SiVH3_HSE/QE/neutralPristine/hse/input"
+OUTPUTDIR="${HOME}/SiVH3_HSE/QE/neutralPristine/hse/output"
+RELAXOUTPUTDIR="${HOME}/SiVH3_HSE/QE/neutralPristine/relax/output"
+PSEUDODIR="${HOME}/SiVH3_HSE/QE/pseudo"
+INPUTFILE="./Si.scf.in"
+OUTPUTFILE="./Si.scf.out"
+
+## Execution Block -----------------------------------------------
+# Environment Setup 
+JOBID=`echo ${PBS_JOBID} | cut -d '.' -f 1`
+# change directory to job-specific directory within scratch
+# directory in /p/work1 
+cd ${JOBDIR}
+cp ${INPUTDIR}/${INPUTFILE} .
+cp -r ${PSEUDODIR} ./
+
+# Launching  ----------------------------------------------------
+# copy executable from $HOME and submit it
+#cp ${HOME}/my_prog.exe .
+module load Espresso/6.4
+mpiexec_mpt -n 1440 pw.x -nb 4 -nk 5 < ${INPUTFILE} > ${OUTPUTFILE}
+
+# Clean up  -----------------------------------------------------
+# archive your results
+# Using the "here document" syntax, create a job script
+# for archiving your data.
+cd ${JOBDIR}
+cat > archive_job.$$ <<END
+#!/bin/bash
+#PBS -l walltime=12:00:00
+#PBS -q transfer
+#PBS -A WPrAFSNW44943FRE
+#PBS -l select=1:ncpus=1
+#PBS -j oe
+#PBS -S /bin/bash
+cd ${JOBDIR}
+/usr/bin/rsh ${ARCHIVE_HOST} mkdir ${ARCHIVE_HOME}/${JOBID}
+/usr/bin/rcp -r ${JOBDIR} ${ARCHIVE_HOST}:${ARCHIVE_HOME}
+/usr/bin/rsh ${ARCHIVE_HOST} ls -l ${ARCHIVE_HOME}/${JOBID}
+END
+# Submit the archive job script.
+qsub archive_job.$$
+rm archive_job.$$
