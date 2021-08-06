@@ -1,0 +1,42 @@
+#!/bin/bash
+## Required PBS Directives --------------------------------------
+#PBS -A AFSNW44943FRE
+#PBS -q standard
+#PBS -l select=2:ncpus=48:mpiprocs=48
+#PBS -l walltime=12:00:00
+#PBS -j oe
+
+## Optional Directives ------------------------------------
+#PBS -N Relax
+#PBS -j oe
+#PBS -M laura.r.nichols@vanderbilt.edu
+#PBS -m be
+
+# Define parameters
+BASE_DIR="${HOME}/SiVH3"
+INPUTFILE="./Si.in"
+OUTPUTFILE="./Si.out"
+RELAX_DIR="neutralPristine"
+N=96
+QE_PATH=${HOME}/q-e-qe-5.0.2
+
+# Environmental Setup
+INPUTDIR="${BASE_DIR}/QE/${RELAX_DIR}/relax/input"
+OUTPUTDIR="${BASE_DIR}/QE/${RELAX_DIR}/relax/output"
+PSEUDODIR="${BASE_DIR}/QE/pseudo"
+
+## Execution Block -----------------------------------------------
+# Environment Setup 
+JOBID=`echo ${PBS_JOBID} | cut -d '.' -f 1`
+# change directory to job-specific directory within scratch
+# directory in /p/work1 
+cd ${JOBDIR}
+cp ${INPUTDIR}/${INPUTFILE} .
+cp -r ${PSEUDODIR} ./
+
+# Launching  ----------------------------------------------------
+# copy executable from $HOME and submit it
+cp ${QE_PATH}/bin/pw.x ./
+#module load Espresso/6.4
+mpiexec_mpt -n ${N} ./pw.x < ${INPUTFILE} &> ${OUTPUTFILE}
+
