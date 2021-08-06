@@ -16,13 +16,14 @@
 BASE_DIR="${HOME}/SiVH3"
 INPUTFILE="./Si.in"
 OUTPUTFILE="./Si.out"
-RELAX_DIR="neutralPristine"
+SYSTEM_DIR="neutralPristine"
+CALC_DIR="relax"
 N=96
 QE_PATH=${HOME}/q-e-qe-5.0.2
 
 # Environmental Setup
-INPUTDIR="${BASE_DIR}/QE/${RELAX_DIR}/relax/input"
-OUTPUTDIR="${BASE_DIR}/QE/${RELAX_DIR}/relax/output"
+INPUTDIR="${BASE_DIR}/QE/${SYSTEM_DIR}/${CALC_DIR}/input"
+OUTPUTDIR="${BASE_DIR}/QE/${SYTEM_DIR}/${CALC_DIR}/output"
 PSEUDODIR="${BASE_DIR}/QE/pseudo"
 
 ## Execution Block -----------------------------------------------
