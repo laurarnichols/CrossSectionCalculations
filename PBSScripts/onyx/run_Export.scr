@@ -1,0 +1,55 @@
+#!/bin/bash
+## Required Directives ------------------------------------
+#PBS -l select=2:ncpus=44:mpiprocs=44
+#PBS -l place=scatter:excl
+#PBS -l walltime=12:00:00
+#PBS -q standard
+#PBS -A AFSNW44943FRE
+
+## Optional Directives ------------------------------------
+#PBS -N SiExport
+#PBS -j oe
+#PBS -M laura.r.nichols@vanderbilt.edu
+#PBS -m be
+
+## Execution Block ----------------------------------------
+# Define parameters
+BASE_DIR="${HOME}/SiVH3"
+SYSTEM_DIR="neutralPristine"
+LAST_CALC_DIR="bands"
+EXPORT_INPUTFILE="./export_neutralPC.in"
+EXPORT_OUTPUTFILE="./export_neutralPC.out"
+QE_OUTPUTDIR="./QEOutput"
+EXPORT_OUTPUTDIR="./output"
+N=88
+BIN_PATH="${HOME}/defectCrossSections/bin"
+EXECUTABLE="Export_QE-5.3.0.x"
+
+# Environmental Setup
+INPUTDIR="${BASE_DIR}/Export/${SYSTEM_DIR}/input"
+OUTPUTDIR="${BASE_DIR}/Export/${SYSTEM_DIR}/output"
+QEOUT_EXPORTINDIR="${BASE_DIR}/QE/${SYSTEM_DIR}/${LAST_CALC_DIR}/output"
+
+# cd to your scratch directory in /work
+cd ${WORKDIR}
+
+# create a job-specific subdirectory based on JOBID and cd to it
+JOBID=`echo ${PBS_JOBID} | cut -d '.' -f 1`
+mkdir -p ${JOBID}
+cd ${JOBID}
+
+# copy input data from $HOME
+# Note that the pseudo directory is copied to the job job directory, so
+# you should always have the QE pseudo_dir be ./[name of directory]
+cp ${INPUTDIR}/${EXPORT_INPUTFILE} .
+
+# copy the QE output needed for input for Export
+mkdir ${QE_OUTPUTDIR}
+cp -r ${QEOUT_EXPORTINDIR}/* ${QE_OUTPUTDIR}
+
+## Launching ----------------------------------------------
+# copy executable from $HOME and submit it
+cp ${BIN_PATH}/${EXECUTABLE} .
+# Launch program
+aprun -n ${N} ./${EXECUTABLE} < ${EXPORT_INPUTFILE} &> ${EXPORT_OUTPUTFILE}
+
