@@ -1,0 +1,60 @@
+#!/bin/bash
+## Required Directives ------------------------------------
+#PBS -l select=2:ncpus=44:mpiprocs=44
+#PBS -l place=scatter:excl
+#PBS -l walltime=12:00:00
+#PBS -q standard
+#PBS -A AFSNW44943FRE
+
+## Optional Directives ------------------------------------
+#PBS -N TME
+#PBS -j oe
+#PBS -M laura.r.nichols@vanderbilt.edu
+#PBS -m be
+
+## Execution Block ----------------------------------------
+# Define parameters
+BASE_DIR="${HOME}/SiVH3"
+INPUTFILE="./tme.in"
+OUTPUTFILE="./tme.out"
+PC_OUTPUTDIR="./exportNeutralPristine"
+SD_OUTPUTDIR="./exportNeutralDefect"
+TME_OUTPUTDIR="./outputDir"
+N=88
+QE_PATH=${HOME}/q-e-qe-5.3
+
+# Environmental Setup
+INPUTDIR="${BASE_DIR}/TME/input"
+OUTPUTDIR="${BASE_DIR}/TME/output"
+EXPORTPCOUT="${BASE_DIR}/Export/neutralPristine/output"
+EXPORTSDOUT="${BASE_DIR}/Export/neutralDefect/output"
+
+# cd to your scratch directory in /work
+cd ${WORKDIR}
+
+# create a job-specific subdirectory based on JOBID and cd to it
+JOBID=`echo ${PBS_JOBID} | cut -d '.' -f 1`
+mkdir -p ${JOBID}
+cd ${JOBID}
+
+# copy input data from $HOME
+# Note that the pseudo directory is copied to the job job directory, so
+# you should always have the QE pseudo_dir be ./[name of directory]
+cp ${INPUTDIR}/${INPUTFILE} .
+
+# copy the Export output needed for input for TME
+mkdir ${PC_OUTPUTDIR}
+cp -r ${EXPORTPCOUT}/* ${PC_OUTPUTDIR}
+
+mkdir ${SD_OUTPUTDIR}
+cp -r ${EXPORTSDOUT}/* ${SD_OUTPUTDIR}
+
+# Make the output directory
+mkdir ${TME_OUTPUTDIR}
+
+## Launching ----------------------------------------------
+# copy executable from $HOME and submit it
+cp ${HOME}/captureCrossSection/bin/TME.x .
+#module load Espresso/6.4
+aprun -n ${N} ./TME.x < ${INPUTFILE} &> ${OUTPUTFILE}
+
