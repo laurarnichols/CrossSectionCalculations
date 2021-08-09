@@ -14,7 +14,7 @@
 
 ## Execution Block ----------------------------------------
 # Define parameters
-BASE_DIR="${HOME}/SiVH3"
+BASE_DIR="${HOME}/CrossSectionCalculations/SiVH3"
 INPUTFILE="./tme.in"
 OUTPUTFILE="./tme.out"
 PC_OUTPUTDIR="./exportNeutralPristine"

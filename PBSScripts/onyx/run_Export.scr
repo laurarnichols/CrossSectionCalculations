@@ -14,7 +14,7 @@
 
 ## Execution Block ----------------------------------------
 # Define parameters
-BASE_DIR="${HOME}/SiVH3"
+BASE_DIR="${HOME}/CrossSectionCalculations/SiVH3"
 SYSTEM_DIR="neutralPristine"
 LAST_CALC_DIR="bands"
 EXPORT_INPUTFILE="./export_neutralPC.in"
