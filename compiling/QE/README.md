@@ -12,7 +12,7 @@
   * `LDFLAGS = -g -pthread -dynamic`
   * Update the libaries for the specific machine
     * Onyx:
-      * `BLAS_LIBS = -L/opt/intel/compilers_and_libraries_2020.4.304/linux/mkl/lib/intel64`(`external`)
+      * `BLAS_LIBS = -L/opt/intel/compilers_and_libraries_2020.4.304/linux/mkl/lib/intel64 -L/opt/intel/compilers_and_libraries_2020.4.304/linux/compiler/lib/ia32`(`external`)
       * `LAPACK_LIBS = $(TOPDIR)/lapack-3.2/lapack.a` (`internal`)
       * `FFT_LIBS = -L/opt/cray/pe/fftw/3.3.8.5/haswell/lib` (`external`)
 * Run `make pw pp` to compile
