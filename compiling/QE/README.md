@@ -6,7 +6,7 @@
 * Make the following changes to the `make.sys` file
   * Remove `-D__SCALAPACK` from `DFLAGS`, if there
   * Uncomment `F90` declaration
-  * Match compilers (`MPIF90`, `F90`, `cc`, `F77`, `CPP`) with the machine specifications (e.g., the compilers listed in the User Guide for a specific [DOD HPC machine](https://centers.hpc.mil/systems/unclassified.html)
+  * Match compilers (`MPIF90`, `F90`, `cc`, `F77`, `CPP`) with the machine specifications (e.g., the compilers listed in the User Guide for a specific [DOD HPC machine](https://centers.hpc.mil/systems/unclassified.html))
   * Change `FFLAGS = -fcheck=all -O3 -g -dynamic`
   * Change `LDFLAGS = -g -pthread -dynamic`
   * Update the libaries for the specific machine
