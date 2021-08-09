@@ -29,10 +29,17 @@ PSEUDODIR="${BASE_DIR}/QE/pseudo"
 
 ## Execution Block -----------------------------------------------
 # Environment Setup 
+# cd to your scratch directory in /work
+cd ${WORKDIR}
+
+# create a job-specific subdirectory based on JOBID and cd to it
 JOBID=`echo ${PBS_JOBID} | cut -d '.' -f 1`
-# change directory to job-specific directory within scratch
-# directory in /p/work1 
-cd ${JOBDIR}
+if [ ! -d ${JOBID} ]; then
+  mkdir -p ${JOBID}
+fi
+cd ${JOBID}
+
+# Copy over needed input files
 cp ${INPUTDIR}/${INPUTFILE} .
 cp -r ${PSEUDODIR} ./
 cp -r ${RELAXOUTPUTDIR}/* ./

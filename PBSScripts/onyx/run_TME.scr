@@ -29,12 +29,16 @@ OUTPUTDIR="${BASE_DIR}/TME/output"
 EXPORTPCOUT="${BASE_DIR}/Export/neutralPristine/output"
 EXPORTSDOUT="${BASE_DIR}/Export/neutralDefect/output"
 
+## Execution Block -----------------------------------------------
+
 # cd to your scratch directory in /work
 cd ${WORKDIR}
 
 # create a job-specific subdirectory based on JOBID and cd to it
 JOBID=`echo ${PBS_JOBID} | cut -d '.' -f 1`
-mkdir -p ${JOBID}
+if [ ! -d ${JOBID} ]; then
+  mkdir -p ${JOBID}
+fi
 cd ${JOBID}
 
 # copy input data from $HOME
