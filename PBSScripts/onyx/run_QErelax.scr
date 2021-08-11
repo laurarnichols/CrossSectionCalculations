@@ -1,9 +1,9 @@
 #!/bin/bash
 ## Required PBS Directives --------------------------------------
 #PBS -A AFSNW44943FRE
-#PBS -q standard
+#PBS -q debug
 #PBS -l select=2:ncpus=44:mpiprocs=44
-#PBS -l walltime=12:00:00
+#PBS -l walltime=1:00:00
 #PBS -j oe
 
 ## Optional Directives ------------------------------------
@@ -45,6 +45,7 @@ cp -r ${PSEUDODIR} ./
 # Launching  ----------------------------------------------------
 # copy executable from $HOME and submit it
 cp ${QE_PATH}/bin/pw.x ./
+module swap PrgEnv-cray PrgEnv-intel
 #module load Espresso/6.4
 aprun -n ${N} ./pw.x < ${INPUTFILE} &> ${OUTPUTFILE}
 
