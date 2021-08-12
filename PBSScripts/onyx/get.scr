@@ -1,0 +1,58 @@
+#!/bin/sh
+#PBS -q transfer
+#PBS -l select=1:ncpus=1
+#PBS -j oe
+#PBS -A AFSNW44943FRE
+
+BASE_DIR="SiVH3_paperQE/QE/neutralPristine"
+PATH_TO_TAR="${BASE_DIR}/relax"
+TAR="output.tar.gz"
+TAR_DIR="output"
+COMP_SCRIPT_PATH="${HOME}/CrossSectionCalculations/${BASE_DIR}/bands"
+COMP_SCRIPT="run.scr"
+
+## Execution Block -----------------------------------------------
+# Environment Setup 
+# cd to your scratch directory in /work
+cd ${WORKDIR}
+
+# create a job-specific subdirectory based on JOBID and cd to it
+JOBID=`echo ${PBS_JOBID} | cut -d '.' -f 1`
+if [ ! -d ${JOBID} ]; then
+  mkdir -p ${JOBID}
+fi
+cd ${JOBID}
+
+# If the archive server is available, get the data. Otherwise, exit.
+STATUS=`archive stat -retry 1 | grep 'on-line' | wc -l`
+if [ $STATUS -eq 0 ] ; then
+  echo "Archive system not on-line!!"
+  echo "Exiting: `date`"
+  exit 2
+fi
+
+echo "Archive system is on-line; retrieving job files."
+archive get -C ${PATH_TO_TAR} ${TAR}
+if [ $? -ne 0 ] then
+   echo "Error from archive get"
+   exit 2
+fi
+
+echo "Input data files retrieved: `date`"
+echo "Unpacking input tar file"
+tar -xvzf ${TAR}
+if [ $? -ne 0 ] then
+   echo "Error from tar extract of data"
+   exit 2
+fi
+
+mv ${TAR_DIR}/* ./
+rm -r ${TAR} ${TAR_DIR}
+
+echo "Directory contents:"
+ls
+
+echo "Submitting computational job"
+cp ${COMP_SCRIPT_PATH}/${COMP_SCRIPT} ./
+qsub -W depend=afterok:${JOBID} ${COMP_SCRIPT}
+exit
