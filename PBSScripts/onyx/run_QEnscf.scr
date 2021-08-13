@@ -30,19 +30,25 @@ PSEUDODIR="${BASE_DIR}/QE/pseudo"
 ## Execution Block -----------------------------------------------
 # Environment Setup 
 # cd to your scratch directory in /work
-cd ${WORKDIR}
+#cd ${WORKDIR}
 
 # create a job-specific subdirectory based on JOBID and cd to it
-JOBID=`echo ${PBS_JOBID} | cut -d '.' -f 1`
-if [ ! -d ${JOBID} ]; then
-  mkdir -p ${JOBID}
-fi
-cd ${JOBID}
+#JOBID=`echo ${PBS_JOBID} | cut -d '.' -f 1`
+#if [ ! -d ${JOBID} ]; then
+#  mkdir -p ${JOBID}
+#fi
+#cd ${JOBID}
+# If running a job where you need to get data from the archive
+# a get script will be run first that will submit this script.
+# Change into the directory from which this script was called
+cd ${PBS_O_WORKDIR}
 
 # Copy over needed input files
 cp ${INPUTDIR}/${INPUTFILE} .
 cp -r ${PSEUDODIR} ./
-cp -r ${RELAXOUTPUTDIR}/* ./
+
+# Copy over relax output directly if not on the archive
+#cp -r ${RELAXOUTPUTDIR}/* ./
 
 # Launching  ----------------------------------------------------
 # copy executable from $HOME and submit it
