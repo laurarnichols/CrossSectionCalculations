@@ -6,6 +6,7 @@
 
 CALC_HOME="SiVH3_paperQE"
 SYSTEM="neutralPristine"
+QE_OUTPUTDIR="./QEOutput"
 
 PATH_TO_TAR="${CALC_HOME}/QE/${SYSTEM}/bands"
 TAR="output.tar.gz"
@@ -49,11 +50,11 @@ if [ $? -ne 0 ]; then
    exit 2
 fi
 
-mv ${TAR_DIR}/* ./
-rm -r ${TAR} ${TAR_DIR}
+mv ${TAR_DIR} ${QE_OUTPUTDIR}
+rm -r ${TAR}
 
 echo "Directory contents:"
-ls
+ls ${QE_OUTPUTDIR}
 
 echo "Submitting computational job"
 cp "${COMP_SCRIPT_PATH}"/${COMP_SCRIPT} ./
