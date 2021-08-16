@@ -12,48 +12,43 @@
 #PBS -M laura.r.nichols@vanderbilt.edu
 #PBS -m be
 
-## Execution Block ----------------------------------------
 # Define parameters
-BASE_DIR="${HOME}/CrossSectionCalculations/SiVH3"
-SYSTEM_DIR="neutralPristine"
-LAST_CALC_DIR="bands"
-EXPORT_INPUTFILE="./export_neutralPC.in"
-EXPORT_OUTPUTFILE="./export_neutralPC.out"
-QE_OUTPUTDIR="./QEOutput"
-EXPORT_OUTPUTDIR="./output"
 N=88
+BASE_DIR="${HOME}/CrossSectionCalculations/SiVH3_paperQE"
+SYSTEM="neutralPristine"
+EXPORT_INPUTFILE="./export_${SYSTEM}.in"
+EXPORT_OUTPUTFILE="./export_${SYSTEM}.out"
+
 BIN_PATH="${HOME}/defectCrossSections/bin"
 EXECUTABLE="Export_QE-5.3.0.x"
 
-# Environmental Setup
-INPUTDIR="${BASE_DIR}/Export/${SYSTEM_DIR}/input"
-OUTPUTDIR="${BASE_DIR}/Export/${SYSTEM_DIR}/output"
-QEOUT_EXPORTINDIR="${BASE_DIR}/QE/${SYSTEM_DIR}/${LAST_CALC_DIR}/output"
+INPUTDIR="${BASE_DIR}/Export/${SYSTEM}/input"
 
 ## Execution Block -----------------------------------------------
-
+# Environment Setup
 # cd to your scratch directory in /work
-cd ${WORKDIR}
+#cd ${WORKDIR}
 
 # create a job-specific subdirectory based on JOBID and cd to it
-JOBID=`echo ${PBS_JOBID} | cut -d '.' -f 1`
-if [ ! -d ${JOBID} ]; then
-  mkdir -p ${JOBID}
-fi
-cd ${JOBID}
+#JOBID=`echo ${PBS_JOBID} | cut -d '.' -f 1`
+#if [ ! -d ${JOBID} ]; then
+#  mkdir -p ${JOBID}
+#fi
+#cd ${JOBID}
+# If running a job where you need to get data from the archive
+# a get script will be run first that will submit this script.
+# Change into the directory from which this script was called
+cd ${PBS_O_WORKDIR}
 
 # copy input data from $HOME
 # Note that the pseudo directory is copied to the job job directory, so
 # you should always have the QE pseudo_dir be ./[name of directory]
 cp ${INPUTDIR}/${EXPORT_INPUTFILE} .
 
-# copy the QE output needed for input for Export
-mkdir ${QE_OUTPUTDIR}
-cp -r ${QEOUT_EXPORTINDIR}/* ${QE_OUTPUTDIR}
-
 ## Launching ----------------------------------------------
 # copy executable from $HOME and submit it
 cp ${BIN_PATH}/${EXECUTABLE} .
+module swap PrgEnv-cray PrgEnv-intel
 # Launch program
-aprun -n ${N} ./${EXECUTABLE} < ${EXPORT_INPUTFILE} &> ${EXPORT_OUTPUTFILE}
+aprun -n ${N} ./${EXECUTABLE} -nk 4 < ${EXPORT_INPUTFILE} &> ${EXPORT_OUTPUTFILE}
 
