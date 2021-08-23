@@ -1,12 +1,12 @@
 &TME_Input
  !
- exportDirSD    = './exportNeutralDefect'  ! path to the export dir
- exportDirPC    = './exportNeutralPristine'  ! path to the export dir
+ exportDirSD    = '/p/work/lnichols/neutralDefect/output'  ! path to the export dir
+ exportDirPC    = '/p/work/lnichols/neutralPristine/output'  ! path to the export dir
  !
  elementsPath   = './outputDir'      ! path to store outputs
  !
  iBandIinit  = 433         ! initial state initial band
- iBandIfinal = 632         ! initial state final band
+ iBandIfinal = 528         ! initial state final band
  iBandFinit  = 432         ! final state initial band
  iBandFfinal = 432         ! final state final band
  !
