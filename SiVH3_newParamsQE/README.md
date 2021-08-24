@@ -1,6 +1,6 @@
 # `SiVH3_paperQE`
 
-This set of calculations is meant to reproduce the matrix elements from the original Barmparis paper. The system is a triply-hydrogenated silicon vacancy, and PBE functionals are used.
+This set of calculations was an aim to reproduce the matrix elements from the original Barmparis paper with parameters typically used in VASP. The goal was to have some clarity on the source of changes in the VASP calculations, as the `Export` code is currently untested for VASP. However, the parameters typically used in VASP did not reproduce the original paper results. The system is a triply-hydrogenated silicon vacancy, and PBE functionals are used.
 
 ## Notes
 
