@@ -1,6 +1,6 @@
 # `SiVH3_paperQE`
 
-This set of calculations is meant to reproduce the matrix elements from the original Barmparis paper. The system is a triply-hydrogenated silicon vacancy, and PBE functionals are used.
+This set of calculations is meant to reproduce the matrix elements from the original Barmparis paper. The only thing that is changed is the number of bands used. The system is a triply-hydrogenated silicon vacancy, and PBE functionals are used.
 
 ## Notes
 
