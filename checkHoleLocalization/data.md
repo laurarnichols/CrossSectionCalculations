@@ -7,4 +7,4 @@
 | Excited | PBE | WZP | 3 down | 0.089 | 0.1608 |
 | Excited | HSE | WZP | 3 down | | |
 | Excited | PBE | jellium | - | 0.1223 | 0.1223 |
-| Excited | HSE | jellium | - | | |
+| Excited | HSE | jellium | - | 0.0954 | 0.0954 |
