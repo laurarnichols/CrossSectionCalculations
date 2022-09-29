@@ -9,15 +9,21 @@ To figure out what the difference is, I am going to compare the `ISMEAR` choices
 reproduce Guanzhi's HSE calculations and compare different choices of `LDIAG`. If the different `ISMEAR` choices aren't the same at the PBE level, I will
 increase the k-point grid density until I can get the results to match.
 
+Based on the input file that Guanzhi sent (`INCAR_Guanzhi`), he was doing an SCF calculation at the HSE level on top of the PBE-optimized geometry. I will
+use `ISMEAR=0` to compare the effect of `LDIAG` at the HSE level.
+
 ## Tasks
 
 - [x] PBE
   - [x] `ISMEAR=-2`
     - [x] Relax
-    - [x] SCF (started)
+    - [x] SCF 
   - [x] `ISMEAR=0`, `SIGMA=0.03`
     - [x] Relax 
-    - [x] SCF (started)
+    - [x] SCF 
+- [ ] HSE
+  - [ ] `LDIAG=.TRUE.`
+  - [ ] `LDIAG=.FALSE.`
 
 ## Notes on Results
 
