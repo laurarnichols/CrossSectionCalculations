@@ -11,10 +11,14 @@ increase the k-point grid density until I can get the results to match.
 
 ## Tasks
 
-- [ ] PBE
-  - [ ] `ISMEAR=-2`
+- [x] PBE
+  - [x] `ISMEAR=-2`
     - [x] Relax
-    - [ ] SCF (started)
-  - [ ] `ISMEAR=0`, `SIGMA=0.03`
+    - [x] SCF (started)
+  - [x] `ISMEAR=0`, `SIGMA=0.03`
     - [x] Relax 
-    - [ ] SCF (started)
+    - [x] SCF (started)
+
+## Notes on Results
+
+* No difference in total energies between different `ISMEAR` settings at PBE level
