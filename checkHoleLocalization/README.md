@@ -36,14 +36,14 @@ couples most strongly to the defect, and Guanzhi said that was the one that he g
     - [x] Relax
     - [x] SCF 
     - [x] Partial charge density
-- [ ] Excited state WZP/VBM
+- [x] Excited state WZP/VBM
   - [x] PBE
     - [x] Relax
     - [x] Band calculation
-  - [ ] HSE
+  - [x] HSE
     - [x] Relax (waiting to see how jellium converges)
-    - [ ] SCF with tighter convergence criteria 
-    - [ ] Partial charge density
+    - [x] SCF with tighter convergence criteria 
+    - [x] Partial charge density
 - [ ] Excited state WZP/3 down
   - [x] PBE
     - [x] Relax
@@ -61,27 +61,13 @@ couples most strongly to the defect, and Guanzhi said that was the one that he g
     - [x] SCF with tighter convergence criteria
     - [ ] Partial charge density
 
-### Results
-
-| Electronic State | Functional | Excitation Model | Hole Location | $E_d  - E_{\text{VBM}}$ chan 1 (eV) | $E_d  - E_{\text{VBM}}$ chan 2 (eV) |
-| --- | --- | --- | --- | --- | --- |
-| Ground | PBE | - | - | 0.0448 | 0.1919 |
-| Ground | HSE | - | - | 0.0313 | 1.5634 |
-| Excited | PBE | WZP | VBM | 0.1233 | 0.0070 |
-| Excited | HSE | WZP | VBM | | |
-| Excited | PBE | WZP | 3 down | 0.089 | 0.1608 |
-| Excited | HSE | WZP | 3 down | | |
-| Excited | PBE | jellium | - | 0.1223 | 0.1223 |
-| Excited | HSE | jellium | - | 0.0954 | 0.0954 |
-
-
 ### Analysis
 
 - [x] Compare lattice parameters to Alkauskas
 - [ ] Compare excited-state equilibrium positions (average atomic displacement vector)
   - [x] VBM vs 3 down, PBE/WZP (max=0.037 A, avg=0.009 A)
   - [ ] VBM vs 3 down, HSE/WZP
-  - [ ] PBE vs HSE, 3 down/WZP
+  - [x] PBE vs HSE, VBM/WZP (max=0.004 A, avg=0.001 A)
   - [x] PBE vs HSE, jellium (no difference)
   - [x] jellium vs WZP 3 down, PBE (max=0.012 A, avg=0.003 A)
   - [x] jellium vs WZP VBM, PBE (max=0.034 A, avg=0.007 A)
