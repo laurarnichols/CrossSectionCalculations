@@ -67,7 +67,7 @@ couples most strongly to the defect, and Guanzhi said that was the one that he g
 - [ ] Compare excited-state equilibrium positions (average atomic displacement vector)
   - [x] VBM vs 3 down, PBE/WZP (max=0.037 A, avg=0.009 A)
   - [ ] VBM vs 3 down, HSE/WZP
-  - [ ] PBE vs HSE, 3 down/WZP
+  - [x] PBE vs HSE, VBM/WZP (max=0.004 A, avg=0.001 A)
   - [x] PBE vs HSE, jellium (no difference)
   - [x] jellium vs WZP 3 down, PBE (max=0.012 A, avg=0.003 A)
   - [x] jellium vs WZP VBM, PBE (max=0.034 A, avg=0.007 A)
