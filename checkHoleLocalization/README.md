@@ -36,14 +36,14 @@ couples most strongly to the defect, and Guanzhi said that was the one that he g
     - [x] Relax
     - [x] SCF 
     - [x] Partial charge density
-- [ ] Excited state WZP/VBM
+- [x] Excited state WZP/VBM
   - [x] PBE
     - [x] Relax
     - [x] Band calculation
-  - [ ] HSE
+  - [x] HSE
     - [x] Relax (waiting to see how jellium converges)
-    - [ ] SCF with tighter convergence criteria 
-    - [ ] Partial charge density
+    - [x] SCF with tighter convergence criteria 
+    - [x] Partial charge density
 - [ ] Excited state WZP/3 down
   - [x] PBE
     - [x] Relax
