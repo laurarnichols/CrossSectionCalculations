@@ -1,0 +1,41 @@
+! How to initialize charge density and wave functions
+ISTART = 0        ! 0 to start a new job, 1 for continuing and reading in wf
+ICHARG = 2        ! 2 to start a new job, 1 for continuing and reading in chg
+INIWAV = 1        ! chooses initially random wf, numerically best
+
+! Electronic control flags
+ENCUT   = 400 !517      ! cutoff energy
+EDIFF   = 1E-6     ! convergence threshold
+PREC    = Normal   ! numerical precision
+PRECFOCK = Fast   ! Controls FFT grid in exact exchange routines
+ALGO    = Damped   ! Davidson algorithm, usually best choice
+TIME    = 0.2      ! Time step for damped algorithm
+LDIAG   = .TRUE.  ! Keep original orbital order
+NELMIN  = 5        ! min electronic steps
+NELM    = 80       ! max electronic steps
+LMAXMIX = 4        ! For d electrons
+AMIX    = 0.1      ! For numerical stability
+BMIX    = 0.01     ! For numerical stability
+
+!ISYM    = -1       ! Turn off symmetry
+ISPIN  = 2        ! Spin polarized calculation: 1 = No, 2 = Yes
+
+! Parallelization flags
+NCORE = 11        ! Band parallelization, 16 is good for PBE, 4 is good for HSE
+KPAR  = 1         ! Set to number of k-point blocks (remember to multiply nodes/procs in jobscript)
+
+! Ionic control flags
+NSW = 0         ! Number of ionic steps per relaxation job
+IBRION = -1        ! Relaxation algorithm, -1 is off, 2 is conjugate gradient
+
+! Electronic broadening
+NBANDS = 568      ! Number of bands, based on OUTCAR from ground state
+ISMEAR = -2       ! -2 is to manually set occupations
+FERWE = 432*1 136*0 ! All valence band filled and electron in defect level
+FERDO = 431*1 137*0 ! All valence band filled but top
+
+LWAVE  = .TRUE.   ! write out wavefunctions
+LCHARG = .TRUE.   ! write out chargedensity
+LVTOT  = .FALSE.  ! write out full potential
+LVHAR  = .FALSE.  ! write out electrostatic potential
+
