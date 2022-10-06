@@ -25,3 +25,15 @@ use `ISMEAR=0` to compare the effect of `LDIAG` at the HSE level.
 
 Did not see any difference with `ISMEAR` or `LDIAG` choice at either level. Guanzhi came back and said that the difference he saw was in going from either
 `ISMEAR=-2`/PBE or `ISMEAR=0`/HSE to WZP VBM HSE. Andy said that he didn't trust the `LDIAG` tag and we should avoid it if possible. 
+
+PBE level with my base settings, comparing choice of `ISMEAR`:
+![image](https://user-images.githubusercontent.com/32521892/194382932-e162790b-693b-47fb-ad7a-ea2b32a91ee3.png)
+
+PBE level with settings Guanzhi used, comparing choice of `ISMEAR`:
+![image](https://user-images.githubusercontent.com/32521892/194383168-f6bb9bf8-dfe0-4951-8055-27b2e83150cb.png)
+
+PBE level with `ISMEAR = -2`, comparing my base tags to Guanzhi's:
+![image](https://user-images.githubusercontent.com/32521892/194383317-664aed76-bc0d-4a9b-b75d-e452ee444e2d.png)
+
+HSE level with Guanzhi's tags, comparing choice of `LDIAG`:
+![image](https://user-images.githubusercontent.com/32521892/194383428-9f4c9624-86f7-4022-85ee-b35685cd71b6.png)
