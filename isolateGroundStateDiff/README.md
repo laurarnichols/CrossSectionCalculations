@@ -17,76 +17,11 @@ use `ISMEAR=0` to compare the effect of `LDIAG` at the HSE level.
 - [x] PBE
   - [x] `ISMEAR=-2`
   - [x] `ISMEAR=0`, `SIGMA=0.03`
-- [ ] HSE
-  - [ ] `LDIAG=.TRUE.`
-  - [ ] `LDIAG=.FALSE.`
+- [x] HSE
+  - [x] `LDIAG=.TRUE.`
+  - [x] `LDIAG=.FALSE.`
 
-## PBE Results
+## Results
 
-Some difference between the choices of `ISMEAR`, but they aren't significant.
-
-<table>
-<tr><th></th><th>'ISMEAR=0'</th><th>`ISMEAR=-2`</th><th>Diff</th></tr>
-<tr><th>E</th><td>578.0435</td><td>-578.044</td><td>-0.00057</td></tr>
-<tr>
-<td>
-
-| Band |
-| ---- |
-| 425  |
-| 426  |
-| 427  |
-| 428  |
-| 429  |
-| 430  |
-| 431  |
-| 432  |
-| 433  |
-
-</td>
-<td>
-
-| E up   | Occ up | E down | Occ down |
-| ------ | ------ | ------ | -------- |
-| 4.7298 | 1      | 4.7528 | 1        |
-| 4.7466 | 1      | 4.7673 | 1        |
-| 4.7865 | 1      | 4.8139 | 1        |
-| 4.9138 | 1      | 4.9868 | 1        |
-| 4.9867 | 1      | 5.0565 | 1        |
-| 5.3208 | 1      | 5.3444 | 1        |
-| 5.3550 | 1      | 5.4690 | 0.54675  |
-| 5.3589 | 1      | 5.4739 | 0.45325  |
-| 7.1379 | 0      | 7.1495 | 0        |
-
-</td>
-<td>
-
-| E up   | Occ up | E down | Occ down |
-| ------ | ------ | ------ | -------- |
-| 4.7328 | 1      | 4.7484 | 1        |
-| 4.7452 | 1      | 4.7603 | 1        |
-| 4.7828 | 1      | 4.8108 | 1        |
-| 4.8894 | 1      | 4.9927 | 1        |
-| 5.0148 | 1      | 5.0531 | 1        |
-| 5.3249 | 1      | 5.3489 | 1        |
-| 5.3281 | 1      | 5.4771 | 1        |
-| 5.4034 | 1      | 5.4786 | 0        |
-| 7.1376 | 0      | 7.1492 | 0        |
-
-</td>
-<td>
-
-| E up     | E down   |
-| -------- | -------- |
-| 0.003    | \-0.0044 |
-| \-0.0014 | \-0.007  |
-| \-0.0037 | \-0.0031 |
-| \-0.0244 | 0.0059   |
-| 0.0281   | \-0.0034 |
-| 0.0041   | 0.0045   |
-| \-0.0269 | 0.0081   |
-| 0.0445   | 0.0047   |
-| \-0.0003 | \-0.0003 |
-
-</td>
-</tr> </table>
+Did not see any difference with `ISMEAR` or `LDIAG` choice at either level. Guanzhi came back and said that the difference he saw was in going from either
+`ISMEAR=-2`/PBE or `ISMEAR=0`/HSE to WZP VBM HSE. Andy said that he didn't trust the `LDIAG` tag and we should avoid it if possible. 
