@@ -42,11 +42,9 @@ $$ \tilde{E}_q^{\text{form}}(\mu_e) = \tilde{E}_q^{N-1} + q(\mu_e - E_{\text{hol
 
 where $E^N$ is the total energy of the perfect-crystal system. Again, the defect-atom potential and total energy of the perfect crystal cancel. However, there is some ambiguity in setting $\mu_e$, which is taken to be the VBM. It is unclear whether it should be the VBM in the defect-free or the defective supercell. In the case of GaN, it differs by about 0.1 or 0.2 eV. 
 
-Here, the total energy of the defect in the charge state is needed and then there is a difference in the energy of the Fermi energy (which we will take to be the actual valence band) and the band you took the electron from (the third down in this case though in the WZP paper they call this Ev). Like before the chemical potentials will cancel. I'll admit there is a little ambiguity here for setting μe. Obviously, the Ev value needs to be evaluated at the band where the electron was taken from, but the question is whether μe should be the VBM in the defect free or the defective supercell. In the present case it differs by ~0.1 or 0.2 eV. *Andy is going discuss with Sok to decide.*
+Here, the total energy of the defect in the charge state is needed and then there is a difference in the energy of the Fermi energy (which we will take to be the actual valence band) and the band you took the electron from (the third down in this case though in the WZP paper they call this Ev). Botht the Fermi level (VBM) and band energy for the hole are taken from the ground-state calculation. Like before the chemical potentials will cancel. 
 
-If you go from a deeper state than the edge of the valence band, you'll have a little bit of a $q(μ_e - E_v) = q (E_{\text{VBM}} - E_{\text{hole}})$ term that lowers this total energy difference. Neglecting for now, the $q(μ_e - E_v)$ term and using one of Andy's WZP calculations ($\tilde{E}_{-1}^{N-1} = -729.15137$ eV) gives
+From Andy's calculations: $q(μ_e - E_v) = q (E_{\text{VBM}} - E_{\text{hole}}) = -1(4.403816 - 4.115236)$ and WZP $\tilde{E}_{-1}^{N-1} = -729.15137$ eV. So we have
 
-$$ \varepsilon(-/0) = \frac{-729.15137 + 730.29195}{0 + 1} =  1.14057 \text{ eV}.$$
-
-Inclusion of the $q(μ_e - E_v)$ term will lower this slightly.
+$$ \varepsilon(-/0) = \frac{-729.15137 - 1(4.403816 - 4.115236) + 730.29195}{0 + 1} =  0.85199 \text{ eV}.$$
 
