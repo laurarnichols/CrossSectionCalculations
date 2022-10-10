@@ -42,7 +42,7 @@ $$ \varepsilon(-/0) = \frac{-725.08759 + 730.29195 - 4.24244}{0 + 1} =  0.96192 
 
 Now, to do similarly for the WZP method. Again, there's nothing special about the $q = 0$ charge state. The formation energies in WZP are given [here](https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.119.105501) in Eq. (6) for the case we care about of $q < 0$ (Eq. (5) for $q > 0$). Eq. (6) is 
 
-$$ \tilde{E}_q^{\text{form}}(\mu_e) = \tilde{E}_q^{N-1} + q(\mu_e - E_{\text{hole}}) - \sum_i n_i \mu_i - E^N, $$
+$$ \tilde{E}\_q^{\text{form}}(\mu_e) = \tilde{E}\_q^{N-1} + q(\mu_e - E\_{\text{hole}} ) - \sum_i n_i \mu_i - E^N, $$
 
 where $E^N$ is the total energy of the perfect-crystal system. Again, the defect-atom potential and total energy of the perfect crystal cancel. However, there is some ambiguity in setting $\mu_e$, which is taken to be the VBM. It is unclear whether it should be the VBM in the defect-free or the defective supercell. In the case of GaN, it differs by about 0.1 or 0.2 eV. 
 
