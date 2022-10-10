@@ -20,13 +20,17 @@ Later in the paper, they define in Eq. (3) the charge-state transition level, wh
 
 $$ \varepsilon(q_1/q_2) = \frac{E^f(X^{q_1}; E_F = 0) - E^f(X^{q_2}; E_F = 0)}{q_2 - q_1}, $$
 
-where $E^f(X^{q}; E_F = 0)$ is the formation energy of defect $X$ in charge state $q$ when the Fermi level is at the VBM ( $E_F = 0$ ).
+where $E^f(X^{q}; E_F = 0)$ is the formation energy of defect $X$ in charge state $q$ when the Fermi level is at the VBM ( $E_F = 0$ ). Setting the zero at the VBM is common when looking at density of states or formation-energy plots. Although we say we are setting $E_F = 0$, we are actually setting $E_F = E_{\text{VBM}}$, which is then considered zero. $E_{\text{VBM}}$, which is the energy level of the VBM in the pristine cell (can use supercell or primitive; should be the same within numerical error).
 
 To calculate $\Delta E$, the pristine-energy and chemical-potential terms cancel, leaving
 
 $$ \varepsilon(q_1/q_2) = \frac{E_{\text{tot}}[X^{q_1}] - E_{\text{tot}}[X^{q_2}] + (q_1 - q_2) E_{\text{VBM}} + E_{\text{corr}}(q_1) - E_{\text{corr}}(q_1)}{q_2 - q_1}. $$
 
-In the previous equation, $E_{\text{VBM}}$, which is the energy level of the VBM in the pristine cell (can use supercell or primitive; should be the same within numerical error). $E_{\text{corr}}$ is the finite-cell calculation for jellium calculations which can be done as explained [here](https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.102.016402). The tool Andy usually uses is obtainable [here](https://sxrepo.mpie.de/projects/sphinx-add-ons/files) (though others exist). 
+$E_{\text{corr}}$ is the finite-cell calculation for jellium calculations which can be done as explained [here](https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.102.016402). $E_{\text{corr}}$ only exists for charged supercells. 
+
+> **Note:** If your supercell is too small, the neutral-defect formation energy will depend on supercell size due to relaxation effects. However, if possible, your supercell should always be converged or close enough with respect to the neutral formation energy. However, when you have charged unit cells via jellium, you have electrostatic interactions between the periodic images of the charges. In general, if you keep increasing your supercell for the charged defect (even past where the neutral defect converges), you'll find that the formation energy (without the correction) will have a parabolic trend if you plot Formation energy vs 1/L where L is some length scale associated with the unit cell (for cubic cells this would just be the lattice constant).
+
+The tool Andy usually uses to calculate $E_{\text{corr}}$ is obtainable [here](https://sxrepo.mpie.de/projects/sphinx-add-ons/files) (though others exist). 
 
 > **Note:**  Use sxdefectalign.bz2 and its manual - DO NOT use the 2D one. This warning is based on work Xiaguang, Sok, and Andy have on the back burner. That prescription for 2D is bogus as the jellium fails severely in 2D materials, but in bulk materials it is ok-ish.
 
