@@ -46,9 +46,9 @@ $$ \tilde{E}\_q^{\text{form}}(\mu_e) = \tilde{E}\_q^{N-1} + q(\mu_e - E\_{\text{
 
 where $E^N$ is the total energy of the perfect-crystal system. Again, the defect-atom potential and total energy of the perfect crystal cancel. However, there is some ambiguity in setting $\mu_e$, which is taken to be the VBM. It is unclear whether it should be the VBM in the defect-free or the defective supercell. In the case of GaN, it differs by about 0.1 or 0.2 eV. 
 
-Here, the total energy of the defect in the charge state is needed and then there is a difference in the energy of the Fermi energy (which we will take to be the actual valence band) and the band you took the electron from (the third down in this case though in the WZP paper they call this Ev). Botht the Fermi level (VBM) and band energy for the hole are taken from the ground-state calculation. Like before the chemical potentials will cancel. 
+Here, the total energy of the defect in the charge state is needed and then there is a difference in the energy of the Fermi energy (which we will take to be the actual valence band) and the band you took the electron from (the third down in this case though in the WZP paper they call this $E\_v$ ). Both the Fermi level (VBM) and band energy for the hole are taken from the ground-state calculation. Like before the chemical potentials will cancel. 
 
-From Andy's calculations: $q(μ_e - E_v) = q (E_{\text{VBM}} - E_{\text{hole}}) = -1(4.403816 - 4.115236)$ and WZP $\tilde{E}_{-1}^{N-1} = -729.15137$ eV. So we have
+From Andy's calculations: $q(μ_e - E_v) = q (E_{\text{VBM}} - E_{\text{hole}}) = -1(4.403816 - 4.115236)$ and WZP $\tilde{E}\_{-1}^{N-1} = -729.15137$ eV. So we have
 
 $$ \varepsilon(-/0) = \frac{-729.15137 - 1(4.403816 - 4.115236) + 730.29195}{0 + 1} =  0.85199 \text{ eV}.$$
 
