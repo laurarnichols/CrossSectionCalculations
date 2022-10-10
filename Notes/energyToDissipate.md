@@ -26,7 +26,7 @@ To calculate $\Delta E$, the pristine-energy and chemical-potential terms cancel
 
 $$ \varepsilon(q_1/q_2) = \frac{E_{\text{tot}}[X^{q_1}] - E_{\text{tot}}[X^{q_2}] + (q_1 - q_2) E_{\text{VBM}} + E_{\text{corr}}(q_1) - E_{\text{corr}}(q_1)}{q_2 - q_1}. $$
 
-$E_{\text{corr}}$ is the finite-cell calculation for jellium calculations which can be done as explained [here](https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.102.016402). $E_{\text{corr}}$ only exists for charged supercells. 
+$E_{\text{corr}}$ is the finite-cell calculation for jellium calculations which can be done as explained [here](https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.102.016402). $E_{\text{corr}}$ only exists for charged supercells. The correction is larger for higher charge states. It also depends on the screening in the system, so two different materials with similar supercell sizes will not necessarily have the same corrections.
 
 > **Note:** If your supercell is too small, the neutral-defect formation energy will depend on supercell size due to relaxation effects. However, if possible, your supercell should always be converged or close enough with respect to the neutral formation energy. However, when you have charged unit cells via jellium, you have electrostatic interactions between the periodic images of the charges. In general, if you keep increasing your supercell for the charged defect (even past where the neutral defect converges), you'll find that the formation energy (without the correction) will have a parabolic trend if you plot Formation energy vs 1/L where L is some length scale associated with the unit cell (for cubic cells this would just be the lattice constant).
 
