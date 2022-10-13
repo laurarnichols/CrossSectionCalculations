@@ -4,6 +4,19 @@ Configuration-coordinate diagrams are a convenient, simplified way to conceptual
 
 <img width="50%" src=https://user-images.githubusercontent.com/32521892/194400557-96b4c018-aeb7-476f-a1a9-98a6c209bf53.png>
 
+In the configuration-coordinate diagram, the total potential energy is plotted as a function of the generalized coordinate. The vibrational energy is represented through a parabola, with a single parabola for each electronic state. We typically consider parabolas with the same curvature; although, in principle, each could have its own curvature, corresponding to different phonon frequencies in the different states.
+
+From Englman and Barnett (1970):
+> In most cases the physical situation cannot be described by two crossing potential curves between which there exists some form of interaction, since each curve may in reality represent a number of potential curves..., not all of which interact. 
+
+Transition can happen horizontally when energy levels coincide; however, the larger the electronic matrix element, the less the horizontal tunneling will dominate. Englman and Barnett treat the configuration-coordinate diagram as representing an  "interaction mode," with the rest of the phonon modes (lattice modes) constituting a thermal bath. They say that in their model they are limited to a change in the lattice phonon count by $\pm 1$, but the interaction-mode phonons can change by more than 1.
+
+_**Questions:**_
+* _What limited Huang and Rhys to a single change in phonon count?_
+* _How can we consider energy conservation in our model?_
+* _How would we relate the change in phonon quanta to a change in potential/kinetic energy of the nuclei and, therefore, the cc diagram?_
+* _How did Englman and Barnett determine the possible direction of nonradiative transitions?_ Potentially already defined in previous references (3-10)
+
 ## Charge-Transition Level
 
 *Based on an email thread with Andy.*
