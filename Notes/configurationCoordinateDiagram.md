@@ -1,10 +1,14 @@
-# Energy to Dissipate 
+# Configuration-Coordinate Diagram
+
+Configuration-coordinate diagrams are a convenient, simplified way to conceptualize what is happening during vibronic transitions. An example of a configuration-coordinate diagram is given below (from Alkauskas et al. 2014). In any vibronic transition, energy must be conserved. To determine what energy must be put into the delta functions to satisfy energy conservation, we must determine the specifics of energy transfer for the transition(s) we consider. 
+
+<img width="50%" src=https://user-images.githubusercontent.com/32521892/194400557-96b4c018-aeb7-476f-a1a9-98a6c209bf53.png>
+
+## Charge-Transition Level
 
 *Based on an email thread with Andy.*
 
-When considering a nonradiative transition, we must consider what energy is getting dissipated into phonons. The total energy does not change in the transition; the energy just gets transformed from electronic energy to vibrational energy. The configurational-coordinate diagram below (from Alkauskas et al. 2014) illustrates this change. The actual transition occurs at the crossing point of the two parabolas, where the total energy does not change. However, the vibrational energy increases from $\Theta_m$ to $\Theta_n$, with a corresponding decrease in the electronic energy $\Delta E$. This energy $\Delta E$ is the charge transition level relative to the valence band maximum (VBM).
-
-<img width="50%" src=https://user-images.githubusercontent.com/32521892/194400557-96b4c018-aeb7-476f-a1a9-98a6c209bf53.png>
+One important part of the energy transfer is the total electronic energy difference between electronic states ($\Delta E$). This energy $\Delta E$ is the charge transition level relative to the valence band maximum (VBM).
 
 Calculating $\Delta E$ requires the calculation of the formation energy in each charge state (whether that be done with WZP or jellium). Normally, formation energies are calculated including a chemical potential for the changed elements (in our case carbon and nitrogen). However, since the charge transition level comes from the crossing of formation energies, it is the difference in them that matters, and the chemical potentials are eliminated (as is the pristine total energy).
 
