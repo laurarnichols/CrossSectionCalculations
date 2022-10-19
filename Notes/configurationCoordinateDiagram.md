@@ -1,10 +1,27 @@
-# Energy to Dissipate 
+# Configuration-Coordinate Diagram
+
+Configuration-coordinate diagrams are a convenient, simplified way to conceptualize what is happening during vibronic transitions. An example of a configuration-coordinate diagram is given below (from Alkauskas et al. 2014). In any vibronic transition, energy must be conserved. To determine what energy must be put into the delta functions to satisfy energy conservation, we must determine the specifics of energy transfer for the transition(s) we consider. 
+
+<img width="50%" src=https://user-images.githubusercontent.com/32521892/194400557-96b4c018-aeb7-476f-a1a9-98a6c209bf53.png>
+
+In the configuration-coordinate diagram, the total potential energy is plotted as a function of the generalized coordinate. The vibrational energy is represented through a parabola, with a single parabola for each electronic state. We typically consider parabolas with the same curvature; although, in principle, each could have its own curvature, corresponding to different phonon frequencies in the different states.
+
+From Englman and Barnett (1970):
+> In most cases the physical situation cannot be described by two crossing potential curves between which there exists some form of interaction, since each curve may in reality represent a number of potential curves..., not all of which interact. 
+
+Transition can happen horizontally when energy levels coincide; however, the larger the electronic matrix element, the less the horizontal tunneling will dominate. Englman and Barnett treat the configuration-coordinate diagram as representing an  "interaction mode," with the rest of the phonon modes (lattice modes) constituting a thermal bath. They say that in their model they are limited to a change in the lattice phonon count by $\pm 1$, but the interaction-mode phonons can change by more than 1.
+
+_**Questions:**_
+* _What limited Huang and Rhys to a single change in phonon count?_
+* _How can we consider energy conservation in our model?_
+* _How would we relate the change in phonon quanta to a change in potential/kinetic energy of the nuclei and, therefore, the cc diagram?_
+* _How did Englman and Barnett determine the possible direction of nonradiative transitions?_ Potentially already defined in previous references (3-10)
+
+## Charge-Transition Level
 
 *Based on an email thread with Andy.*
 
-When considering a nonradiative transition, we must consider what energy is getting dissipated into phonons. The total energy does not change in the transition; the energy just gets transformed from electronic energy to vibrational energy. The configurational-coordinate diagram below (from Alkauskas et al. 2014) illustrates this change. The actual transition occurs at the crossing point of the two parabolas, where the total energy does not change. However, the vibrational energy increases from $\Theta_m$ to $\Theta_n$, with a corresponding decrease in the electronic energy $\Delta E$. This energy $\Delta E$ is the charge transition level relative to the valence band maximum (VBM).
-
-<img width="50%" src=https://user-images.githubusercontent.com/32521892/194400557-96b4c018-aeb7-476f-a1a9-98a6c209bf53.png>
+One important part of the energy transfer is the total electronic energy difference between electronic states ($\Delta E$). This energy $\Delta E$ is the charge transition level relative to the valence band maximum (VBM).
 
 Calculating $\Delta E$ requires the calculation of the formation energy in each charge state (whether that be done with WZP or jellium). Normally, formation energies are calculated including a chemical potential for the changed elements (in our case carbon and nitrogen). However, since the charge transition level comes from the crossing of formation energies, it is the difference in them that matters, and the chemical potentials are eliminated (as is the pristine total energy).
 
