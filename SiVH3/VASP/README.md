@@ -7,8 +7,8 @@ The Barmparis paper used the jellium model, so I will use that, although we typi
 ## Tasks
 
 - [ ] Neutral pristine
-  - [ ] Relax
-  - [ ] SCF
+  - [x] Relax
+  - [ ] SCF (started)
   - [ ] NSCF
   - [ ] Export
 - [ ] Neutral defect (initial, excited state)
