@@ -34,6 +34,13 @@
     * Take the number of cores and divide by `NCORE` to get the number of band groups
     * The number of bands must be evenly divisible by the number of band groups
     * If these values don't line up, VASP will automatically adjust the numbers of bands, which can lead to issues if you are setting the occupations manually using `FERWE/FERDO`
+  * Lower (higher) `NCORE` is slower (faster) but utilizes less (more) memory
+* `KPAR`
+  * Should be an integer divisor of the total number of cores
+  * K-points are split up first, then bands
+  * Number of processors working on a group of k-points is `number-of-cores/KPAR`
+  * Try not to let the number of processors working on a group split across nodes (i.e., make `number-of-cores/KPAR` an integer divisor of the number of cores per node
+  * Also, try to have the same number of k-pooints in each group (i.e., make `KPAR` an integer divisor of the number of unique k-points)
 
 
 ## QE
