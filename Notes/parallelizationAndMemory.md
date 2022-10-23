@@ -41,6 +41,7 @@
   * Number of processors working on a group of k-points is `number-of-cores/KPAR`
   * Try not to let the number of processors working on a group split across nodes (i.e., make `number-of-cores/KPAR` an integer divisor of the number of cores per node
   * Also, try to have the same number of k-pooints in each group (i.e., make `KPAR` an integer divisor of the number of unique k-points)
+  * To be safe, you can set the bands and processors based on `NCORE`, then set `KPAR` based on number of k-points and multiply the number of nodes by `KPAR`
 
 
 ## QE
