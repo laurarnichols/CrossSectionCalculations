@@ -13,12 +13,12 @@ I will need to do calculations on the perfect-crystal supercell and the final st
 - [ ] Neutral pristine
   - [x] Relax (including cell)
   - [x] SCF
-  - [ ] NSCF (started)
+  - [x] NSCF
   - [ ] Export
 - [ ] Negatively-charged defect with neutral supercell (final, ground state)
   - [x] Relax (only inner dof)
   - [x] SCF
-  - [ ] NSCF (started)
+  - [x] NSCF
   - [ ] Export
 - [ ] Run TME
 - [ ] Plot results
