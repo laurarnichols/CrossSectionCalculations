@@ -39,3 +39,6 @@
 * For HSE, cannot do an NSCF calculation because of how the exact exchange is calculated
 * Everything is the same as SCF, except `ICHARG=11`
 
+### HSE
+
+You can do relaxations or SCF calculations at the HSE level for better accuracy. The mixing parameter should be tuned to match the experimental band gap. For detailed notes on hybrid-functional theory and calculations see the [hybrid theory and calculations](hybridTheoryAndCalculations.md) note.
