@@ -24,3 +24,13 @@ The other case that you may need to start with a completely different starting g
 
 It may seem daunting that these sorts of distortions will occur, but they occur due to so-called Jahn-Teller effects. If you look at the electronic structure of the defect, you may notice that there are partially filled degenerate midgap levels. The symmetry breaking occurs to break this degeneracy. So, in the Si vacancy, when the defect is neutral, there are three mid gap levels in each spin channel and if the Td symmetry is kept, there will be two parallel spin electrons in one spin channel (so it is an $S = 1$ defect). However, allowing the symmetry to break with a tetragonal distortion will lead to the degeneracy breaking and the two electrons pairing up. So, any time you see the degeneracy you may consider a distortion (there are of course special cases like dynamical JT effects where the barrier to reconfigure between different distortions of the defect are small and the defect will actually fluctuate between all directions of distortion and lead to an averaging effect, but don't worry too much about this for now.)
 
+## Calculations
+
+For VASP:
+* Set `LHFCALC = .TRUE.` to turn on HSE
+* Recommended algorithm is `ALGO = Damped` with `TIME = 0.5`, decreasing the time step TIME if convergence is not reached 
+* `Damped` and `All` are supported; `Normal` is okay but slow and has caveats; other algorithms are not supported
+* `GGA = PE` for PBE functional (should come from POTCAR file, but good to specify)
+* Must specify `HFSCREEN` to go from PBE0 (default, `HFSCREEN = 0`) to either HSE06 (used by Alkauskas; `HFSCREEN = 0.2`) or HSE03 (`HFSCREEN = 0.3`)
+* `AEXX` is exact-exchange mixing parameter to be tuned
+* When running hybrid calculations, good to have a preconverged PBE wave function/charge density to read in for faster/better convergence
