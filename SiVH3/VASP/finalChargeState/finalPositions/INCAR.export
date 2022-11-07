@@ -1,0 +1,35 @@
+! How to initialize charge density and wave functions
+ISTART = 1        ! 0 to start a new job, 1 for continuing and reading in wf
+ICHARG = 11        ! 11 for NSCF (constant charge density)
+!INIWAV = 1        ! chooses initially random wf, numerically best
+
+! Electronic control flags
+NBANDS = 800      ! Number of bands
+ENCUT  = 517      ! cutoff energy
+EDIFF  = 1E-7     ! convergence threshold
+PREC   = Normal   ! numerical precision
+ALGO   = Normal   ! Davidson algorithm, usually best choice
+NELMIN = 5        ! min electronic steps
+NELM   = 80       ! max electronic steps
+LMAXMIX = 2       ! Twice max occupied l in POTCAR (recommended for ICHARG = 11)
+
+ISPIN  = 1        ! Spin polarized calculation: 1 = No, 2 = Yes
+ISYM   = 0        ! Turn off symmetry except time-reversal
+
+! Parallelization flags
+NCORE = 1        ! Band parallelization, 16 is good for PBE, 4 is good for HSE
+KPAR  = 1         ! Set to number of k-point blocks (remember to multiply nodes/procs in jobscript)
+
+! Ionic control flags
+NSW = 0           ! Number of ionic steps per relaxation job
+IBRION = -1       ! Relaxation algorithm, -1 is off, 2 is conjugate gradient
+
+! Electronic broadening
+ISMEAR = 0        ! 0 is Gaussian broadening
+SIGMA  = 0.001     ! amount of broadening
+
+LWAVE  = .TRUE.   ! write out wavefunctions
+LCHARG = .TRUE.   ! write out chargedensity
+LVTOT  = .FALSE.  ! write out full potential
+LVHAR  = .FALSE.  ! write out electrostatic potential
+
