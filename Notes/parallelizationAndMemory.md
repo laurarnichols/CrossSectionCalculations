@@ -3,7 +3,7 @@
 * To determine the number of processors:
   * Figure out how many electrons are in the system by adding up the occupations for each atom type and multiplying by how many atoms of that type are in the system
   * Divide by 10
-  * Get node count by dividing the number of processors per node and rounding up
+  * Get node count by dividing by the number of processors per node and rounding up
   * Multiply the rounded number of nodes by the number of processors per node
   * For HSE calculations, multiply by 2 or 3
 * Hybrid MPI/OpenMP
