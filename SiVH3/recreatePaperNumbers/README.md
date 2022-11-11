@@ -23,3 +23,10 @@ I will need to do calculations on the perfect-crystal supercell and the final st
 - [x] Run TME
 - [x] Plot results
 
+## Results
+
+Using the `Export` program from VASP as-is:
+
+<p align="center">
+  <img src="./VASPvsPaper.png" width="50%">
+</p>
