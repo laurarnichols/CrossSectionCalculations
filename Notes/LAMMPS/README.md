@@ -2,6 +2,11 @@
 
 LAMMPS is an MD software. We use LAMMPS to relax the amorphous $\text{SiO}\_2$ in our prototype dangling bond system. 
 
+## Resources
+* [Various tutorials](https://lammpstutorials.github.io/)
+* [Manual](https://docs.lammps.org/)
+* [Example input file](https://docs.lammps.org/2001/data_format.html)
+
 ## Commands
 
 ### Initialization
@@ -26,14 +31,32 @@ LAMMPS is an MD software. We use LAMMPS to relax the amorphous $\text{SiO}\_2$ i
 ### System Definition
 
 * [`lattice`](https://docs.lammps.org/lattice.html)
-* Defines the lattice parameter and vectors
-* For specific cell types, you can give the cell type and lattice parameter:
-  * `lattice fcc 3.52`
-  * `lattice diamond 5.431`
-* For a custom cell type, you can set the lattice vectors explicitly:
-  * Use `a1`, `a2`, and `a3` to set the lattice vectors
-  * Use `basis` to set the fractional coordinates of a basis atom
-  * `lattice custom 3.52 a1 1.0 0.0 0.0 a2 0.5 1.0 0.0 a3 0.0 0.0 0.5 basis 0.0 0.0 0.0 basis 0.5 0.5 0.5`
+  * Defines the lattice parameter and vectors
+  * For specific cell types, you can give the cell type and lattice parameter:
+    * `lattice fcc 3.52`
+    * `lattice diamond 5.431`
+  * For a custom cell type, you can set the lattice vectors explicitly:
+    * Use `a1`, `a2`, and `a3` to set the lattice vectors
+    * Use `basis` to set the fractional coordinates of a basis atom
+    * `lattice custom 3.52 a1 1.0 0.0 0.0 a2 0.5 1.0 0.0 a3 0.0 0.0 0.5 basis 0.0 0.0 0.0 basis 0.5 0.5 0.5`
+* [`region`](https://docs.lammps.org/region.html)
+  * Defines different regions in the simulation
+  * We will use this to define our cell
+  * First argument is the name of the region
+  * Second argument gives shape/style of region 
+  * We will use `block x_min x_max y_min y_max z_min z_max`
+* [`create_box`](https://docs.lammps.org/create_box.html)
+  * Generates the simulation box
+  * First argument is the number of atom types
+  * Second argument is the `region` name to use to create the box
+* [`create_atoms`](https://docs.lammps.org/create_atoms.html)
+  * Alternative to reading atom coordinates using `read_data` or `read_restart`
+  * Simulation box must already exist (typically created with `create_box`)
+  * Lattice must also be defined via `lattice`
+  * First argument is index of atom type to create
+  * Second arugment is style
+  * For `box` style, lattice is populated within simulation box
+
 
 
 ## Example: Bulk Si
