@@ -10,6 +10,8 @@ LAMMPS is an MD software. We use LAMMPS to relax the amorphous $\text{SiO}\_2$ i
 
 ## Commands
 
+Run LAMMPS using `lmp -in in.file`. The commands in the input script are described below.
+
 ### Initialization
 
 * [`units`](https://docs.lammps.org/units.html)
