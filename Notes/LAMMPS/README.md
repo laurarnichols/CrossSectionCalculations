@@ -56,7 +56,53 @@ LAMMPS is an MD software. We use LAMMPS to relax the amorphous $\text{SiO}\_2$ i
   * First argument is index of atom type to create
   * Second arugment is style
   * For `box` style, lattice is populated within simulation box
+* [`read_data`](https://docs.lammps.org/read_data.html)
+  * Read initial atom coordinates and other parameters from input file
+  * `read file-name`
+* [`pair_coeff`](https://docs.lammps.org/pair_coeff.html)
+  * First two arguments are atom types for the given coefficient
+  * Can use asterisks for first two arguements
+  * Can overwrite more-general coefficients defined with asterisks later in script
+  * For tersoff `pair_style`:
+    * First two arguments must be asterisks
+    * Third argument is file name (found in `LAMMPS_POTENTIALS` path)
+    * Final arguments are how you would like the atoms found in the potential file to map onto the atom types previously defined
+    * Example: if you have 3 atom types and you want the first two to be Si and the last one to be C, you would use `pair_coeff * * SiC.tersoff Si Si C`
+* [`mass`](https://docs.lammps.org/mass.html)
+  * Set masses of atoms
+  * First argument is atom-type index or label
+  * Second argument is the mass
+  * Can use an aterisk when using indices to define several atom types with the same mass
+  * For label:
+    * `labelmap atom 1 C`
+    * `mass C 12.01`
+    * Can also use label if defined in input file
+  * Defined in same way in input file
+    * Follows `Masses` header
+    * `atom-type mass`
+    * Can't use asterisk in input file
 
+### Simulation Settings
+
+* [`velocity`](https://docs.lammps.org/velocity.html)
+  * First argument is group ID (e.g., `all`)
+  * Second arguemnt determines the style of how to set the velocities
+  * A style of `create` generates a random set of velocities using a temperature and seed (e.g., `create 1000.0 376847`)
+  * `loop geom` sets specific seeds for each atom based on the coordinates. Will not necessarily be the same on all machines because of small numerical differences in coordinates.
+* [`neighbor`](https://docs.lammps.org/neighbor.html)
+  * Sets the additional distance beyond the force cutoff distance to consider nearest neighbors
+  * `neighbor skin style`
+  * `style = bin` will almost always be fastest for our purposes
+  * For `metal` units, default is `skin = 2.0` Angstroms
+* [`neighbor_modify`](https://docs.lammps.org/neigh_modify.html)
+  * `delay n` says only consider rebuilding the neighbor list `n` steps after the last build
+  * `every n` says consider rebuilding the neighbor list every `n` steps after the `delay` has passed
+  * `check yes/no` determines whether or not to check how far atoms have moved before rebuilding neighbor list
+  * Default is `check yes`
+  * If `check yes`, build only occurs if at least one atom has moved more than half the neighbor skin distance
+* [`fix 1 all nve`](https://docs.lammps.org/fix_nve.html) performs plain time integration to update position and velocity using velocity-Verlet algorithm (not invoked during energy minimization)
+* [`timestep x`](https://docs.lammps.org/timestep.html) sets the simulation timestep to `x`
+* [`run n`](https://docs.lammps.org/run.html) runs the simulation for `n` steps
 
 
 ## Example: Bulk Si
