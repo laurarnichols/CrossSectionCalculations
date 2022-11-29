@@ -6,8 +6,11 @@ LAMMPS is an MD software. We use LAMMPS to relax the amorphous $\text{SiO}\_2$ i
 * [Various tutorials](https://lammpstutorials.github.io/)
 * [Manual](https://docs.lammps.org/)
 * [Example input file](https://docs.lammps.org/2001/data_format.html)
+* [Potentials](lammps.sandia.gov/bench.html#potentials)
 
 ## Commands
+
+Run LAMMPS using `lmp -in in.file`. The commands in the input script are described below.
 
 ### Initialization
 
