@@ -1,6 +1,6 @@
 # SiVH3 Neutral Defect in Neutral Positions
 
-218-atom Si supercell with triply-hydrogenated Si vacancy in the center of the cell. Charge state is neutral and relaxed in neutral charge state.  Ran relaxation 7 nodes (308 processors) on Onyx.
+218-atom Si supercell with triply-hydrogenated Si vacancy in the center of the cell. Charge state is neutral and relaxed in neutral charge state.  Ran on 7 nodes (308 processors) on Onyx.
 
 Calculations:
 * Relax
