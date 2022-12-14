@@ -1,6 +1,6 @@
 # SiVH3 Pristine
 
-216-atom pristine Si supercell. Ran relaxation 7 nodes.
+216-atom pristine Si supercell. Ran relaxation 7 nodes (308 processors) on Onyx.
 
 Calculations:
 * Relax
