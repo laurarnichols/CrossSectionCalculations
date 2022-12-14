@@ -15,7 +15,7 @@ I will need to do calculations on the perfect-crystal supercell and the final st
   - [x] SCF
   - [ ] NSCF
   - [ ] Export
-- [ ] Negatively-charged defect with neutral supercell (final, ground state)
+- [ ] [Neutral defect](../VASP/finalChargeState/finalPositions/README.md) (final, ground state)
   - [ ] Relax (only inner dof)
   - [ ] SCF
   - [ ] NSCF
