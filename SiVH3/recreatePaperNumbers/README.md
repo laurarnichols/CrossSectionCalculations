@@ -10,11 +10,11 @@ In the original paper, the geometry of each system (pristine, neutral defect, ch
 
 I will need to do calculations on the perfect-crystal supercell and the final state of the defect with an electron captured. For each system, I will do a relaxation, an SCF calculation to converge the charge density based on the final ion positions (with more bands and tighter convergence), and an NSCF calculation to increase the k-point grid (with `ISYM = 0`). I will then need to export each and run the TME program to get the matrix elements.
 
-- [ ] [Neutral pristine](../VASP/pristine/README.md)
+- [x] [Neutral pristine](../VASP/pristine/README.md)
   - [x] Relax (including cell)
   - [x] SCF
   - [x] NSCF
-  - [ ] Export
+  - [x] Export
 - [ ] [Neutral defect](../VASP/finalChargeState/finalPositions/README.md) (final, ground state)
   - [x] Relax (only inner dof)
   - [x] SCF
