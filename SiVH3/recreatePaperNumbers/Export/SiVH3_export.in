@@ -1,0 +1,5 @@
+&inputParams
+  VASPDir = './'
+  exportDir = './export'
+  gammaOnly = .false.
+/

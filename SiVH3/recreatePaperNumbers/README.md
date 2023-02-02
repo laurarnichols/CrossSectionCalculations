@@ -14,12 +14,12 @@ I will need to do calculations on the perfect-crystal supercell and the final st
   - [x] Relax (including cell)
   - [x] SCF
   - [x] NSCF
-  - [x] Export
+  - [x] [Export](./Export)
 - [x] [Neutral defect](./VASP/finalChargeState/finalPositions/) (final, ground state)
   - [x] Relax (only inner dof)
   - [x] SCF
   - [x] NSCF
-  - [x] Export
+  - [x] [Export](./Export)
 - [x] Run [TME](./TME/)
 - [x] Plot results
 
