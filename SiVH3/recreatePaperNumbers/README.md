@@ -20,17 +20,15 @@ I will need to do calculations on the perfect-crystal supercell and the final st
   - [x] SCF
   - [x] NSCF
   - [x] Export
-- [ ] Run TME
-- [ ] Plot results
+- [x] Run TME
+- [x] Plot results
 
 ## Results
 
-Using the `Export` program from VASP as-is:
+Final results:
 
 <p align="center">
   <img src="./VASPvsPaper.png" width="50%">
 </p>
 
-The results do not match. First, there is a slight offset. I think this is likely just due to a slight difference in the energy bands as calculated by VASP and QE, possibly related to the different pseudopotentials. However, this difference is small, so I don't think it is a concern. The matrix elements, though, are roughly twice as big as with the QE code. I am concerned that this could be more than just a numerical difference and could possibly be a bug in the `Export` code. 
-
-I have noticed in the past that the G-vectors are sorted in the `ExportFromVASPOutput` code based on the magnitude of the vector, but they are not sorted in the `ExportFromVASPSrc` code. The different orderings in the different codes could be a potential source of this discrepancy. I am going to work on migrating the `projectors.ik` to `ExportFromVASPOutput` not only to speed up the export, but also to maintain a consistent G-vector ordering. I will rerun `TME` after the migration and see if that fixes the issue.
+Originally, the results from VASP were about twice as big as those from the paper. The absolute difference wasn't that large, but the `Export` code as it was was very inefficient and slow and had issues with the ordering of the G-vectors. I fully merged our two Export programs and fixed the bugs, and now the results match those from the paper. 
