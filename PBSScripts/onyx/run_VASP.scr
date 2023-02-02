@@ -2,18 +2,18 @@
 ## Required PBS Directives --------------------------------------
 #PBS -A AFSNW44943FRE
 #PBS -q debug
-#PBS -l select=2:ncpus=44:mpiprocs=44
+#PBS -l select=7:ncpus=44:mpiprocs=44
 #PBS -l walltime=1:00:00
 #PBS -l place=scatter:excl
 
 ## Optional Directives ------------------------------------
-#PBS -N SiVH3_TME
+#PBS -N Si_nscf
 #PBS -j oe
 #PBS -M laura.r.nichols@vanderbilt.edu
 #PBS -m be
 
 # Define parameters
-BASE_DIR="${WORKDIR}/SiVH3/TME"
+BASE_DIR="${WORKDIR}/SiVH3/pristine_5.4.4"
 
 ## Execution Block -----------------------------------------------
 # Environment Setup 
@@ -24,5 +24,5 @@ cd ${BASE_DIR}
 module swap PrgEnv-cray PrgEnv-intel
 module unload cray-libsci
 
-aprun -n 88 ~/defectCrossSections/bin/TME.x < TME.in > TME.out
+aprun -n 308 ~/vasp.5.4.4/bin/vasp_std
 
