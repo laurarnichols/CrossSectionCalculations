@@ -4,24 +4,24 @@ The goal of this set of calculations is to calculate the matrix elements doing e
 
 For the zeroth-order matrix element, we only need the initial state (neutral pristine) and the final state (ground-state defect). We consider electron capture by a triply-hydrogenated Si vacancy in bulk Si. In the initial (excited) state, the defect is positively charged, while it is neutral in the final (ground) state.
 
-In the original paper, the geometry of each system (pristine, neutral defect, charged defect) were optimized independently. However, we should really be considering a vertical transition, so the final defect wave function should be taken from the system with the initial atomic positions (from neutral defect) and final (negative) charge state. Because I am trying to validate our code and recreate the paper numbers, I am going to do what the paper did here. However, I am also going to do a calculation to see what difference is made by using the correct wave functions. 
+In the original paper, the geometry of each system (pristine, neutral defect, charged defect) were optimized independently. However, we should really be considering a vertical transition, so the final defect wave function should be taken from the system with the initial atomic positions (from positively-charged defect) and final (neutral) charge state. Because I am trying to validate our code and recreate the paper numbers, I am going to do what the paper did here. However, I am also going to do a calculation to see what difference is made by using the correct wave functions. 
 
 ## Tasks
 
 I will need to do calculations on the perfect-crystal supercell and the final state of the defect with an electron captured. For each system, I will do a relaxation, an SCF calculation to converge the charge density based on the final ion positions (with more bands and tighter convergence), and an NSCF calculation to increase the k-point grid (with `ISYM = 0`). I will then need to export each and run the TME program to get the matrix elements.
 
-- [x] Neutral pristine
+- [x] [Neutral pristine](../VASP/pristine/README.md)
   - [x] Relax (including cell)
   - [x] SCF
   - [x] NSCF
   - [x] Export
-- [x] Negatively-charged defect with neutral supercell (final, ground state)
+- [x] [Neutral defect](../VASP/finalChargeState/finalPositions/README.md) (final, ground state)
   - [x] Relax (only inner dof)
   - [x] SCF
   - [x] NSCF
   - [x] Export
-- [x] Run TME
-- [x] Plot results
+- [ ] Run TME
+- [ ] Plot results
 
 ## Results
 

@@ -21,7 +21,7 @@ _**Questions:**_
 
 *Based on an email thread with Andy.*
 
-One important part of the energy transfer is the total electronic energy difference between electronic states ($\Delta E$). This energy $\Delta E$ is the charge transition level relative to the valence band maximum (VBM).
+One important part of the energy transfer is the total electronic energy difference between electronic states ( $\Delta E$ ). This energy $\Delta E$ is the charge transition level relative to the valence band maximum (VBM).
 
 Calculating $\Delta E$ requires the calculation of the formation energy in each charge state (whether that be done with WZP or jellium). Normally, formation energies are calculated including a chemical potential for the changed elements (in our case carbon and nitrogen). However, since the charge transition level comes from the crossing of formation energies, it is the difference in them that matters, and the chemical potentials are eliminated (as is the pristine total energy).
 
