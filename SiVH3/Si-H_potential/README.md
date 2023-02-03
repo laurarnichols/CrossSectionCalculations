@@ -1,6 +1,6 @@
 # Si-H Potential
 
-This calculation is to look at the total energy curve as a function of Si-H bond length.
+This calculation is to look at the total energy curve as a function of Si-H bond length to get an idea of how quickly (in length and vibrational quanta) the bond gets anharmonic. 
 
 Choosing the bond betwen Si 107 and H 216. From VESTA, we have
 ```
