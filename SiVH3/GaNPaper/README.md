@@ -22,3 +22,24 @@ Tasks based on how things were done in the Barmparis paper (will need to be upda
   - [ ] SCF using positive-defect geometry
   - [ ] NSCF
   - [ ] Export
+
+## Notes and questions from Guanzhi's input files
+
+* 5x5x5 supercell
+  * This large supercell is generated from a relaxed 3x3x3 supercell padded by perfect crystal using `gen supercell`
+  * Perfect crystal
+    * `ENCUT` is 400 eV
+    * `ENMAX` in `POTCAR` file is 245.345 eV, so 400 eV seems reasonable
+    * Does it need to be the same as what is used in the defect cell? I would think so for the matrix element calculations.
+    * `NBANDS` is 3008
+    * `EDIFF = 1E-6`. Is that converged?
+    * The Barmparis calculations used `ISYM=0`. Why is `ISYM=-1` used here?
+    * HSE part is commented out. Where is HSE used?
+    * `ISPIN=2` here for spin-polarized, but I don't think that is needed for the perfect crystal
+    * Why is the Monkhorst-Pack scheme used rather than a $\Gamma$-centered grid? VASP wiki says only use $\Gamma$-centered for FCC with `ISYM>=0`.
+    * 2x2x2 k-point grid is used
+  * Defect 
+    * Same inputs as perfect crystal but different geometry
+    * Will need to relax in positive charge state
+    * Only included neutral state, which should be his initial/my final state
+    * If 5x5x5 supercells are used for the electronic matrix elements, shouldn't the defect state be negative here for the transition that Guanzhi is considering?
