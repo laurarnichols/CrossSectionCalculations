@@ -8,28 +8,44 @@ For this calculation, I will need the ground-state, perfect-crystal system; the 
 
 Tasks based on how things were done in the Barmparis paper (will need to be updated):
 
-- [ ] Perfect crystal
+### Zeroth-order matrix elements
+- [ ] Perfect crystal 5x5x5
   - [ ] Relax
   - [ ] SCF
   - [ ] NSCF
   - [ ] Export
-- [ ] Positive-defect crystal (I think this may be used for phonons, but I'm not sure what needs to be done)
-  - [ ] Relax
-  - [ ] SCF
-  - [ ] NSCF (?)
-  - [ ] Export (?)
-- [ ] Neutral-defect crystal
-  - [ ] SCF using positive-defect geometry
-  - [ ] NSCF
-  - [ ] Export
+- [ ] Defect crystal
+  - [ ] 3x3x3 positive defect
+    - [ ] Relax
+  - [ ] Use `gen supercell` to generate 5x5x5 supercell
+  - [ ] 5x5x5 neutral defect
+    - [ ] SCF
+    - [ ] NSCF
+    - [ ] Export
+- [ ] Get matrix elements with `TME`
+- [ ] Plot results
+
+### Phonons
+
+???
+
+### $S_j$
+
+???
+
+### First-order matrix elements
+
+???
 
 ## Notes and questions from Guanzhi's input files
 
 * 5x5x5 supercell
   * This large supercell is generated from a relaxed 3x3x3 supercell padded by perfect crystal using `gen supercell`
+  * Guanzhi said that he used a 3x3x3 supercell relaxation as input to `gen supercell`, but he only sent 5x5x5 and 2x2x2 supercells. Does he have a 3x3x3 supercell to use?
   * Perfect crystal
     * `ENCUT` is 400 eV
     * `ENMAX` in `POTCAR` file is 245.345 eV, so 400 eV seems reasonable
+    * How was `ENCUT` converged?
     * Does it need to be the same as what is used in the defect cell? I would think so for the matrix element calculations.
     * `NBANDS` is 3008
     * `EDIFF = 1E-6`. Is that converged?
@@ -43,3 +59,7 @@ Tasks based on how things were done in the Barmparis paper (will need to be upda
     * Will need to relax in positive charge state
     * Only included neutral state, which should be his initial/my final state
     * If 5x5x5 supercells are used for the electronic matrix elements, shouldn't the defect state be negative here for the transition that Guanzhi is considering?
+* 2x2x2 supercell
+  * Why are there inputs here for a 2x2x2 supercell with a 5x5x5 k-point mesh for the zeroth-order matrix elements? I thought the zeroth-order matrix elements were calculated using the 5x5x5 supercell with a 2x2x2 k-point mesh?
+  * How was the strategy for setting the occupations across multiple k-points decided? I don't remember ever discussing a resolution to this question.
+* I remember Guanzhi and Xiaoguang saying that we don't use binning anymore, so does that mean the `TME` code has been updated?
