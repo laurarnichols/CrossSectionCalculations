@@ -4,6 +4,8 @@ This calculation considers the +/0 transition for a triply hydrogenated vacancy 
 
 For this calculation, I will need the ground-state, perfect-crystal system; the excited-state, positive-defect system; and the ground-state, neutral-defect system. For the defect system, the geometry should be relaxed in the positive defect state. 
 
+_Note: Andy mentioned in the past that with WZP, we need to confirm that the states we are placing the carriers in are not resonance states. He said to do this by generating `PARCHG` files. I don't remember how to do this off of the top of my head, but it's theoretically something that should be done for these calculations if we have time._
+
 ### 0/- transition
 
 Guanzhi did the 0/- charge-state transition. He used a 2x2x2 supercell with a 5x5x5 k-point grid for his calculations because HSE and excited-state DFT calculations and the first-order matrix element calculations are not feasible in larger supercells. The first-order matrix elements require derivatives along each of the phonon directions, so they size of the calculations increases rapidly with supercell size. _Note: I am curious what portion of this calculation size was due to how incredibly slow the Export program previously was. That is something to possibly consider in the future now that the program is much faster._ 
