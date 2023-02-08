@@ -25,7 +25,7 @@ In the Barmparis paper, the process for the DFT calculations was to relax at the
 ### Zeroth-order matrix elements
 - [ ] Perfect crystal 2x2x2 supercell, 5x5x5 k-point mesh
   - [x] Relax
-  - [ ] SCF (tighter convergence, symmetry off)
+  - [x] SCF (tighter convergence, symmetry off)
   - [ ] Export (need to make output seem spin-polarized even though they aren't)
 - [ ] Defect crystal 2x2x2
   - [ ] Positive defect
