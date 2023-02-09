@@ -3,6 +3,9 @@
 * 2x2x2 supercell
 * 5x5x5 Gamma-centered k-point mesh
 * `ENCUT = 600` (based on Guanzhi's calculations)
+* Relaxation uses `EDIFF = 1E-5` and SCF uses tighter convergence of `EDIFF = 1E-8`
+* `NBANDS` default for relax and 200 for SCF
+* `ISYM` default for relax and 0 for SCF (to match defect calculation)
 
 ## Tasks
 
