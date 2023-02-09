@@ -11,7 +11,7 @@
 
 - [x] Relax
 - [x] SCF
-- [ ] Export
+- [ ] Export (need to make output look spin-polarized to match defect calculation)
 
 ## Notes
 
