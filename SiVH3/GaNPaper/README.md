@@ -28,11 +28,12 @@ In the Barmparis paper, the process for the DFT calculations was to relax at the
   - [x] SCF (tighter convergence, symmetry off)
   - [ ] Export (need to make output seem spin-polarized even though they aren't)
 - [ ] Defect crystal 2x2x2
-  - [ ] Positive defect
-    - [ ] Relax
-  - [ ] Neutral defect in positive-defect-relaxed positions
-    - [ ] SCF
-    - [ ] Export
+  - [ ] Relax defect in ground state (neutral)
+  - [ ] SCF for ground state defect
+  - [ ] Excite carrier out of defect into band and re-relax
+  - [ ] SCF for excited state
+  - [ ] SCF for ground state at excited-state positions
+  - [ ] Export
 - [ ] Get matrix elements with `TME`
 - [ ] Plot results
 
