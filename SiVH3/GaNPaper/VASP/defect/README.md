@@ -1,0 +1,1 @@
+# Triply-hydrogenated Si vacancy
