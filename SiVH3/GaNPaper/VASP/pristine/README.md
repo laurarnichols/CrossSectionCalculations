@@ -1,5 +1,9 @@
 # Pristine
 
+* 2x2x2 supercell
+* 5x5x5 Gamma-centered k-point mesh
+* `ENCUT = 600` (based on Guanzhi's calculations)
+
 ## Tasks
 
 - [x] Relax
