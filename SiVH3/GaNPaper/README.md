@@ -24,14 +24,8 @@ In the Barmparis paper, the process for the DFT calculations was to relax at the
 
 ### Zeroth-order matrix elements
 - [ ] [Perfect crystal](./VASP/pristine) 
-- [ ] Defect crystal 2x2x2
-  - [ ] Relax defect in ground state (neutral)
-  - [ ] SCF for ground state defect
-  - [ ] Excite carrier out of defect into band and re-relax
-  - [ ] SCF for excited state
-  - [ ] SCF for ground state at excited-state positions
-  - [ ] Export
-- [ ] Get matrix elements with `TME`
+- [ ] [Defect crystal](./VASP/defect)
+- [ ] [Get matrix elements](./TME) with `TME`
 - [ ] Plot results
 
 ### Phonons
