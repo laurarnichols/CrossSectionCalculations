@@ -9,9 +9,8 @@
 ## Tasks
 
 - [x] [Relax defect in ground state (neutral) then SCF](./finalChargeState/finalPositions)
-- [ ] [Excite carrier out of defect into band and re-relax](./initialChargeState)
-- [ ] SCF for excited state
-- [ ] SCF for ground state at excited-state positions
+- [x] [Excite carrier out of defect into band and re-relax then SCF](./initialChargeState)
+- [ ] SCF for ground state in excited-state positions
 - [ ] Export
 
 ## Notes
