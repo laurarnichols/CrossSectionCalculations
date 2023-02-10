@@ -23,8 +23,8 @@ In the Barmparis paper, the process for the DFT calculations was to relax at the
 ## Tasks
 
 ### Zeroth-order matrix elements
-- [ ] [Perfect crystal](./VASP/pristine) 
-- [ ] [Defect crystal](./VASP/defect)
+- [x] [Perfect crystal](./VASP/pristine) 
+- [x] [Defect crystal](./VASP/defect)
 - [ ] [Get matrix elements](./TME) with `TME`
 - [ ] Plot results
 
