@@ -2,6 +2,11 @@
 # Move POSCAR-xxx files from Phonopy into individual folders and
 # submit VASP SCF calculations for each. You must have INCAR
 # KPOINTS, and POTCAR files in current directory.
+#
+# To run:
+# chmod +x submitVASPBatch.scr
+# ./runVASPBatch.scr
+
 
 # Run this first to generate displaced POSCAR files.
 #phonopy -d --dim="1 1 1"
