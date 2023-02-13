@@ -1,7 +1,6 @@
 # Pristine Si
 
-216-atom pristine Si supercell. [Ran on 7 nodes (308 processors) on Onyx.](https://github.com/laurarnichols/CrossSectionCalculations/blob/main/Scripts/onyx/run_VASP.scr)
-
+216-atom pristine Si supercell. Ran on 7 nodes (308 processors) on Onyx.
 Calculations:
 * Relax
   * Gamma point
