@@ -1,0 +1,30 @@
+#!/bin/bash
+## Required PBS Directives --------------------------------------
+#PBS -A AFSNW44943FRE
+#PBS -q debug
+#PBS -l select=1:ncpus=44:mpiprocs=44
+#PBS -l walltime=1:00:00
+#PBS -l place=scatter:excl
+
+## Optional Directives ------------------------------------
+#PBS -N SiVH3Ground_dispGen
+#PBS -j oe
+#PBS -M laura.r.nichols@vanderbilt.edu
+#PBS -m be
+
+# Define parameters
+BASE_DIR="${WORKDIR}/SiVH3/GaNPaper/Phonons/finalChargeState/"
+
+## Execution Block -----------------------------------------------
+# Environment Setup 
+# cd to base directory in /work
+cd ${BASE_DIR}
+
+# Launching  ----------------------------------------------------
+module load phonopy
+
+# Run this first to generate displaced POSCAR files.
+# Possibly generates 3N*2 files (two for each mode),
+# but cannot find this online for sure. 
+phonopy -d --dim="1 1 1"
+
