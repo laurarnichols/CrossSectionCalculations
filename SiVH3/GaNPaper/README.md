@@ -21,24 +21,14 @@ In the calculations, Guanzhi treated the perfect crystal as spin-polarized (`ISP
 In the Barmparis paper, the process for the DFT calculations was to relax at the Gamma point then do an NSCF calculation to get to a denser k-point mesh. However, the supercell used there was slightly larger (216 vs 64 atoms). I will start with relaxing with the full mesh (5x5x5 in 2x2x2 supercell) and worry about using the process outlined in the Barmparis paper calculations if the relaxation is too slow.
 
 ## Tasks
-
-### Zeroth-order matrix elements
 - [x] [Perfect crystal](./VASP/pristine) 
 - [x] [Defect crystal](./VASP/defect)
-- [ ] [Get matrix elements](./TME) with `TME`
-- [ ] Plot results
-
-### Phonons
-
-???
-
-### $S_j$
-
-???
-
-### First-order matrix elements
-
-???
+- [ ] [Get overlaps with `TME`](./TME)
+- [ ] [Final charge state/final positions phonons](./Phonons)
+- [ ] $S_j$
+- [ ] $M_j$
+- [ ] Zeroth-order capture coefficient
+- [ ] First-order capture coefficient
 
 ## Notes and questions from Guanzhi's input files
 
