@@ -1,7 +1,6 @@
 # Pristine Si
 
 216-atom pristine Si supercell. Ran on 7 nodes (308 processors) on Onyx.
-
 Calculations:
 * Relax
   * Gamma point

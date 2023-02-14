@@ -1,0 +1,66 @@
+#!/bin/bash
+# Move POSCAR-xxx files from Phonopy into individual folders and
+# submit VASP SCF calculations for each. You must have INCAR
+# KPOINTS, and POTCAR files in current directory.
+#
+# To run:
+# chmod +x submitVASPBatch.scr
+# ./runVASPBatch.scr
+
+
+# Run this first to generate displaced POSCAR files.
+#phonopy -d --dim="1 1 1"
+
+# Update the second number based on how many output
+# fils you get from the command above
+for i in {001..396}
+do
+  # Make folder for each displacement
+  mkdir disp-$i
+
+  # Move the displaced POSCAR files to individual
+  # folders as POSCAR
+  mv POSCAR-$i disp-$i/POSCAR
+
+  # Copy in other input files for SCF calculation
+  cp INCAR KPOINTS POTCAR disp-$i
+
+  # Change into the directory for this displacement
+  cd disp-$i
+
+  # Generate a script to run VASP in this folder
+  cat > run_VASP.scr << EOF
+#!/bin/bash
+## Required PBS Directives --------------------------------------
+#PBS -A AFSNW44943FRE
+#PBS -q debug
+#PBS -l select=2:ncpus=44:mpiprocs=44
+#PBS -l walltime=1:00:00
+#PBS -l place=scatter:excl
+
+## Optional Directives ------------------------------------
+#PBS -N ${i}_SiVH3Ground_scf
+#PBS -j oe
+
+# Define parameters
+BASE_DIR="\${WORKDIR}/SiVH3/GaNPaper/Phonons/finalChargeState/disp-${i}"
+
+## Execution Block -----------------------------------------------
+# Environment Setup 
+# cd to base directory in /work
+cd \${BASE_DIR}
+
+# Launching  ----------------------------------------------------
+module swap PrgEnv-cray PrgEnv-intel
+module unload cray-libsci
+
+aprun -n 88 ~/vasp.5.4.4/bin/vasp_std
+EOF
+
+  # Submit the script to run VASP
+  qsub run_VASP.scr
+
+  # Change back to base directory to repeat with
+  # other displacements
+  cd ../
+done
