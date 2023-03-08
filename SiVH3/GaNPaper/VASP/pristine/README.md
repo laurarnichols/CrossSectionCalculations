@@ -10,7 +10,7 @@
 
 ## Tasks
 
-- [ ] Relax
+- [ ] Relax (running)
 - [ ] SCF
 - [ ] Export (need to make output look spin-polarized to match defect calculation)
 
