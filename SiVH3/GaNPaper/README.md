@@ -1,6 +1,6 @@
 # Triply hydrogenated Si vacancy calculation for GaN Paper
 
-This calculation considers the +/0 transition for a triply hydrogenated vacancy in Si. The same transition was considered in the Barmparis paper, but the geometry used for the defect supercell was not correct, the charge state was set using jellium, and everything was done at the PBE level. 
+This calculation considers the +/0 transition for a triply hydrogenated vacancy in Si. The same transition was considered in the Barmparis paper, but the geometry used for the defect supercell was not correct, the charge state was set using jellium, spin polarization was not used, and everything was done at the PBE level. 
 
 For this calculation, I will need the ground-state, perfect-crystal system; the excited-state, positive-defect system; and the ground-state, neutral-defect system. For the defect system, the geometry should be relaxed in the positive defect state. 
 
@@ -8,21 +8,17 @@ _Note: Andy mentioned in the past that with WZP, we need to confirm that the sta
 
 ### 0/- transition
 
-Guanzhi did the 0/- charge-state transition. He used a 2x2x2 supercell with a 5x5x5 k-point grid for his calculations because HSE and excited-state DFT calculations and the first-order matrix element calculations are not feasible in larger supercells. The first-order matrix elements require derivatives along each of the phonon directions, so they size of the calculations increases rapidly with supercell size. _Note: I am curious what portion of this calculation size was due to how incredibly slow the Export program previously was. That is something to possibly consider in the future now that the program is much faster._ 
+Guanzhi did the 0/- charge-state transition. He originally used a 2x2x2 supercell with a 5x5x5 k-point grid for his calculations because they said HSE and excited-state DFT calculations and the first-order matrix element calculations are not feasible in larger supercells. The first-order matrix elements require derivatives along each of the phonon directions, so they size of the calculations increases rapidly with supercell size. After parallelizing the TME and Export codes and running some of the calculations myself, Sok and I argued that we should try using a bigger supercell for the matrix elements. We ended up deciding on a 4x4x4 supercell at the Gamma point for the matrix elements and a 2x2x2 supercell with a 3x3x3 k-point mesh for the phonons. The phonons in the smaller supercell are directly applied to the larger supercell to displace the atoms for the first-order matrix elemtns. 
 
-He calculated the zeroth-order matrix element using a 5x5x5 supercell with a 2x2x2 k-point mesh, where the defect was in the ground state (neutral), in order to justify the use of the 2x2x2 supercell. His results showed that the larger and smaller supercells gave the same results for the zeroth-order matrix elements. Because he used the ground state for the 5x5x5 supercell, he also used it for the 2x2x2 supercell. Technically, because he considers the 0/- transition, his final state for the matrix element should be the negatively-charged defect in the neutral-defect-relaxed positions; however, Xiaoguang and Sok said that the wave functions probably would not change for the two charge states and that the choice is justified given that the excited-state calculations are so much more difficult to converge. 
+Guanzhi originally considered the ground-state defect in the relaxed positions of the neutral defect for all of the matrix elements. Technically, because he considers the 0/- transition, his final state for the matrix element should be the negatively-charged defect in the neutral-defect-relaxed positions; however, Xiaoguang and Sok said that the wave functions probably would not change for the two charge states and that the choice is justified given that the excited-state calculations are so much more difficult to converge. He later came back and said something about using the final charge state, but I tried to clarify and have not gotten a response.
 
-The excited-state calculations must still be used for the first-order term for this transition and for the relaxation of the +/0 transition. The WZP paper does not address using multiple k-points. Xiaoguang argued that the band carriers are just screening charges and, since the energy is subtracted out in the WZP method, the final results do not change significantly if the carriers are excited across the k-points in order of increasing energy (taking into account the band dispersion) or uniformly across k-points. He also said that exciting them uniformly was simpler and easier to converge, so that is the method we use.
-
-In the calculations, Guanzhi treated the perfect crystal as spin-polarized (`ISPIN=2`) even though that's not needed because he said it made it easier to match the output up with the defect results. I will use `ISPIN=1` for the perfect crystal and update the output files manually. He also used `ISYM=-1` to avoid mistakes, but the Export code handles the weight of the k-points with `ISYM=0`, so that is what I will use. With `ISYM=0`, the VASP Wiki says not to use the Monkhorst-Pack k-point mesh (what Guanzhi used), so I will use a gamma-centered grid. These changes should not affect the results and should just make them faster. 
+In the calculations, Guanzhi treated the perfect crystal as spin-polarized (`ISPIN=2`) even though that's not needed because he said it made it easier to match the output up with the defect results. I will use `ISPIN=1` for the perfect crystal because I updated the Export and TME codes to consider spin-polarization properly. He also used `ISYM=-1` to avoid mistakes, but the Export code handles the weight of the k-points with `ISYM=0`, so that is what I will use. With `ISYM=0`, the VASP Wiki says not to use the Monkhorst-Pack k-point mesh (what Guanzhi used), so I will use a gamma-centered grid. These changes should not affect the results and should just make them faster. 
 
 ### Barmparis paper
 
-In the Barmparis paper, the process for the DFT calculations was to relax at the Gamma point then do an NSCF calculation to get to a denser k-point mesh. However, the supercell used there was slightly larger (216 vs 64 atoms). I will start with relaxing with the full mesh (5x5x5 in 2x2x2 supercell) and worry about using the process outlined in the Barmparis paper calculations if the relaxation is too slow.
-
 ## Tasks
-- [x] [Perfect crystal](./VASP/pristine) 
-- [x] [Defect crystal](./VASP/defect)
+- [ ] [Perfect crystal](./VASP/pristine) 
+- [ ] [Defect crystal](./VASP/defect)
 - [ ] [Get overlaps with `TME`](./TME)
 - [ ] [Final charge state/final positions phonons](./Phonons)
 - [ ] $S_j$
