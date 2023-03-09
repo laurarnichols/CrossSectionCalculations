@@ -10,6 +10,6 @@
 
 ## Tasks
 
-- [X] Relax (22 minutes on 320 processors)
-- [X] SCF (9 minutes on 320 processors)
-- [ ] Export (running)
+- [X] Relax (22 minutes on 220 processors)
+- [X] SCF (9 minutes on 220 processors)
+- [X] Export (45 minutes on 220 processors)
