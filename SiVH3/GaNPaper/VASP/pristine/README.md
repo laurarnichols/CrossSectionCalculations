@@ -10,10 +10,6 @@
 
 ## Tasks
 
-- [X] Relax
-- [ ] SCF (running)
-- [ ] Export (need to make output look spin-polarized to match defect calculation)
-
-## Notes
-
-
+- [X] Relax (22 minutes on 320 processors)
+- [X] SCF (9 minutes on 320 processors)
+- [ ] Export (running)
