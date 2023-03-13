@@ -17,7 +17,7 @@ In the calculations, Guanzhi treated the perfect crystal as spin-polarized (`ISP
 ### Barmparis paper
 
 ## Tasks
-- [ ] [Perfect crystal](./VASP/pristine) 
+- [X] [Perfect crystal](./VASP/pristine) 
 - [ ] [Defect crystal](./VASP/defect)
 - [ ] [Get overlaps with `TME`](./TME)
 - [ ] [Final charge state/final positions phonons](./Phonons)
