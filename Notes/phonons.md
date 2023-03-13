@@ -10,7 +10,7 @@ _Adapted from email from Guanzhi_
 ```
 phonopy -d --dim="1 1 1"
 ```
-3. You will see some new files named `POSCAR-xxx`. For each, you should make a new folder `disp-xxx` in `Phonon` folder and move `POSCAR-xxx` to the folder, then do an SCF (no relaxation) in each `disp-xxx` folder. [This script](../Scripts/submitVASPBatch.scr) can be used to set up folders and submit VASP calculations.
+3. You will see some new files named `POSCAR-xxx`. For each, you should make a new folder `disp-xxx` in `Phonon` folder and move `POSCAR-xxx` to the folder, then do an SCF (no relaxation) in each `disp-xxx` folder. [This script](../Scripts/submitVASPBatch.scr) can be used to set up folders and submit VASP calculations. _Note: You can also copy over WAVECAR and CHGCAR files to speed up the calculations, but if you do that make sure to submit the script to the queue because it takes a while to copy over those files for each folder._
 5. After finishing all scf, [run](../Scripts/onyx/run_Phonopy_forceGen.scr) the following in Phonon folder to create `FORCE_SETS` (replace `xxx` with the max number)
 ```
 phonopy -f disp-{001..xxx}/vasprun.xml
