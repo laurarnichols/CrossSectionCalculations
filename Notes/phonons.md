@@ -1,6 +1,6 @@
 # Phonons
 
-Our capture calculations require the phonon frequencies and displacement vectors. These should be taken from the final relaxed state. 
+Our capture calculations require the phonon frequencies and displacement vectors. These should be taken from the final relaxed state. The ground state can also be used as we assume that the phonons do not change between the two charge states. 
 
 ## Steps
 _Adapted from email from Guanzhi_
