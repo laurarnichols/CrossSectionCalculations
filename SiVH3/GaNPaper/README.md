@@ -20,7 +20,7 @@ In the calculations, Guanzhi treated the perfect crystal as spin-polarized (`ISP
 - [X] [Perfect crystal](./VASP/pristine) 
 - [ ] [Defect crystal](./VASP/defect)
 - [ ] [Get overlaps with `TME`](./TME)
-- [ ] [Final charge state/final positions phonons](./Phonons)
+- [X] [Final charge state/final positions phonons](./Phonons)
 - [ ] $S_j$
 - [ ] $M_j$
 - [ ] Zeroth-order capture coefficient
