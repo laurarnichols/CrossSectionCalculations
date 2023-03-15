@@ -10,7 +10,7 @@
 
 - [X] [Relax defect in ground state (neutral)](./finalChargeState/finalPositions) (6 hours on 308 processors)
 - [X] [Excite carrier out of defect into band and re-relax](./initialChargeState) (5 hours on 308 processors)
-- [ ] [SCF for ground state in excited-state positions](./finalChargeState/initialPositions) (running)
+- [X] [SCF for ground state in excited-state positions](./finalChargeState/initialPositions) (30 minutes on 308 processors)
 - [ ] Export
 
 ## Notes
