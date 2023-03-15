@@ -1,4 +1,4 @@
-# VASP calculations
+# VASP calculations and Export
 
 * All calculations here are done on 4x4x4 supercells at the Gamma point.
 * Previously, calculations were done on 2x2x2 supercells with a 5x5x5 Gamma-centered k-point mesh. Those geometries are retained here in case they might be useful in the future. 
