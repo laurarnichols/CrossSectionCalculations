@@ -12,4 +12,4 @@
 
 - [X] Relax (22 minutes on 220 processors)
 - [X] SCF (9 minutes on 220 processors)
-- [X] Export (45 minutes on 220 processors)
+- [X] Export (5 minutes on 220 processors)
