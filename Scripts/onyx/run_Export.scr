@@ -2,7 +2,7 @@
 ## Required PBS Directives --------------------------------------
 #PBS -A AFSNW44943FRE
 #PBS -q debug
-#PBS -l select=1:ncpus=44:mpiprocs=44
+#PBS -l select=5:ncpus=44:mpiprocs=44
 #PBS -l walltime=1:00:00
 #PBS -l place=scatter:excl
 
@@ -13,7 +13,7 @@
 #PBS -m be
 
 # Define parameters
-BASE_DIR="${WORKDIR}/SiVH3/pristine_5.4.4"
+BASE_DIR="${WORKDIR}/SiVH3/GaNPaper/pristine"
 
 ## Execution Block -----------------------------------------------
 # Environment Setup 
@@ -24,5 +24,5 @@ cd ${BASE_DIR}
 module swap PrgEnv-cray PrgEnv-intel
 module unload cray-libsci
 
-aprun -n 44 ~/defectCrossSections/bin/Export_VASP.x < Si_export.in > Si_export.out
+aprun -n 220 ~/defectCrossSections/bin/Export_VASP.x -nk 1 -nb 4 < Si_export.in > Si_export.out
 
