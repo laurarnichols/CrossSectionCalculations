@@ -3,7 +3,7 @@
 #PBS -A AFSNW44943FRE
 #PBS -q debug
 #PBS -l select=1:ncpus=128:mpiprocs=128
-#PBS -l walltime=1:00:00
+#PBS -l walltime=0:30:00
 #PBS -l place=scatter:excl
 
 ## Optional Directives ------------------------------------
