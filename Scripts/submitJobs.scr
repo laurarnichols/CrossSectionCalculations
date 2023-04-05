@@ -1,0 +1,8 @@
+#!/bin/bash
+
+for i in {0003..1539}
+do
+  cd disp-$i
+  qsub run_VASP-Export.scr
+  cd ../
+done
