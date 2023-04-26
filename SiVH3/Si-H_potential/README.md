@@ -50,6 +50,6 @@ The resulting total energies are
 <div align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="./Si-HpotentialEnergyCurve_dark.png">
-    <img src="./Si-HpotentialEnergyCurve_light.png" width="50%">
+    <img src="./Si-HpotentialEnergyCurve_light.png" width="500">
   </picture>
  </div>
