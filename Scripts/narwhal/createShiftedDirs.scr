@@ -1,0 +1,90 @@
+#!/bin/bash
+# Move POSCAR-xxx files from Phonopy into individual folders and
+# submit VASP SCF calculations for each. You must have INCAR
+# KPOINTS, and POTCAR files in current directory.
+#
+# To run:
+# chmod +x submitVASPBatch.scr
+# ./runVASPBatch.scr
+## Required PBS Directives --------------------------------------
+#PBS -A AFSNW44943FRE
+#PBS -q debug
+#PBS -l select=1:ncpus=128:mpiprocs=128
+#PBS -l walltime=0:30:00
+#PBS -l place=scatter:excl
+
+## Optional Directives ------------------------------------
+#PBS -N createShiftedDirs
+#PBS -j oe
+#PBS -M laura.r.nichols@vanderbilt.edu
+#PBS -m be
+
+# Define parameters
+BASE_DIR="${WORKDIR}/SiVH3/PhononPP/"
+
+N=128
+
+
+cd ${BASE_DIR}
+
+
+createDirCopy() {
+  local i=$1
+  # Make folder for each displacement
+  mkdir disp-$i
+
+  # Move the displaced POSCAR files to individual
+  # folders as POSCAR
+  mv ph_POSCAR_$i disp-$i/POSCAR
+
+  # Copy in other input files for SCF calculation
+  cp INCAR KPOINTS POTCAR WAVECAR CHGCAR disp-$i
+
+  # Generate a script to run VASP in this folder
+  cat > disp-$i/run_VASP-Export.scr << EOF
+#!/bin/bash
+## Required PBS Directives --------------------------------------
+#PBS -A AFSNW44943FRE
+#PBS -q debug
+#PBS -l select=4:ncpus=128:mpiprocs=128
+#PBS -l walltime=0:30:00
+#PBS -l place=scatter:excl
+
+## Optional Directives ------------------------------------
+#PBS -N ${i}SiVH3_FOME
+#PBS -j oe
+
+# Define parameters
+BASE_DIR="\${WORKDIR}/SiVH3/PhononPP/disp-${i}"
+
+## Execution Block -----------------------------------------------
+# Environment Setup 
+# cd to base directory in /work
+cd \${BASE_DIR}
+
+# Launching  ----------------------------------------------------
+module unload cray-libsci
+
+echo "Running VASP." && 
+date +"%T" &&
+aprun -n 512 ~/vasp.5.4.4/bin/vasp_std && 
+echo "VASP exited clean. Running Export." && 
+date +"%T" &&
+aprun -n 512 ~/defectCrossSections/bin/Export_VASP.x -nk 1 -nb 4 < SiVH3_export.in > SiVH3_export.out &&
+echo "Export exited clean. Submitting TME." && 
+date +"%T" &&
+qsub run_TME.scr
+EOF
+}
+
+# Update the second number based on how many output
+# fils you get from the command above
+for i in {0003..1539}
+do
+  createDirCopy $i &  
+
+  if [[ $(jobs -r -p | wc -l) -ge $N ]]; then
+    wait -n
+  fi
+done
+wait

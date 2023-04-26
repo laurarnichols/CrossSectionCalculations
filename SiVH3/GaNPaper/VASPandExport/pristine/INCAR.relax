@@ -4,7 +4,7 @@ ICHARG = 2        ! 2 to start a new job, 1 for continuing and reading in chg
 INIWAV = 1        ! chooses initially random wf, numerically best
 
 ! Electronic control flags
-ENCUT  = 600      ! cutoff energy
+ENCUT  = 400      ! cutoff energy
 EDIFF  = 1E-5     ! convergence threshold
 PREC   = Normal   ! numerical precision
 ALGO   = Normal   ! Davidson algorithm, usually best choice

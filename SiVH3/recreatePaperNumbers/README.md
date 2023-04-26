@@ -31,4 +31,4 @@ Final results:
   <img src="./VASPvsPaper.png" width="50%">
 </p>
 
-Originally, the results from VASP were about twice as big as those from the paper. The absolute difference wasn't that large, but the `Export` code as it was was very inefficient and slow and had issues with the ordering of the G-vectors. I fully merged our two Export programs and fixed the bugs, and now the results match those from the paper. 
+Originally, the results from VASP were about twice as big as those from the paper. The absolute difference wasn't that large, but the `Export` code as it was was very inefficient and slow and had issues with the ordering of the G-vectors. I fully merged our two Export programs and fixed the bugs, and the results matched with the paper. Since my original calculation, I have parallelized Export and TME and updated TME to use the reduced $G+k$ grid rather than the full $G$-vector grid because the reudced grid is far more efficient. There are slight differences between the different versions of Export and TME, but those seem to be numerical.

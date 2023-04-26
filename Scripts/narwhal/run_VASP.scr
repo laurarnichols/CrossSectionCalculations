@@ -1,0 +1,28 @@
+#!/bin/bash
+## Required PBS Directives --------------------------------------
+#PBS -A AFSNW44943FRE
+#PBS -q debug
+#PBS -l select=1:ncpus=128:mpiprocs=128
+#PBS -l walltime=0:30:00
+#PBS -l place=scatter:excl
+
+## Optional Directives ------------------------------------
+#PBS -N Si_nscf
+#PBS -j oe
+#PBS -M laura.r.nichols@vanderbilt.edu
+#PBS -m be
+
+# Define parameters
+BASE_DIR="${WORKDIR}/SiVH3/pristine_5.4.4"
+
+## Execution Block -----------------------------------------------
+# Environment Setup 
+# cd to base directory in /work
+cd ${BASE_DIR}
+
+# Launching  ----------------------------------------------------
+module swap PrgEnv-cray PrgEnv-intel
+module unload cray-libsci
+
+aprun -n 128 ~/vasp.5.4.4/bin/vasp_std
+
