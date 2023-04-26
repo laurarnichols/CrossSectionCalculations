@@ -47,3 +47,9 @@ The resulting total energies are
 -1170.57530569
 
 ```
+<div align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./Si-HpotentialEnergyCurve_dark.png">
+    <img src="./Si-HpotentialEnergyCurve_light.png" width="50%">
+  </picture>
+ </div>
