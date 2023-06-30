@@ -1,7 +1,0 @@
-&inputpp
-  prefix = 'Si',
-  outdir = './QEOutput',
-  !
-  exportDir = './output'
-  writeWFC = .true.
-/
