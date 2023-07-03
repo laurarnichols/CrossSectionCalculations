@@ -1,0 +1,22 @@
+&inputParams
+ 
+ exportDirEigs       = '/p/work/lnichols/SiVH3/GaNPaper/finalChargeState/initialPositions/PBE/gamma/export'
+ exportDirInitInit   = '/p/work/lnichols/SiVH3/GaNPaper/initialChargeState/HSE/export' 
+ exportDirFinalInit  = '/p/work/lnichols/SiVH3/GaNPaper/finalChargeState/initialPositions/HSE/export' 
+ exportDirFinalFinal = '/p/work/lnichols/SiVH3/GaNPaper/finalChargeState/finalPositions/HSE/export' 
+
+ outputDir           = './'
+
+ eCorrectTot    = 0.0        ! eV
+ eCorrectEigF   = 0.5356     ! eV
+ eCorrectEigRef = 0.0        ! eV
+
+ iBandIinit   = 1025         ! initial state initial band
+ iBandIfinal  = 1088         ! initial state final band
+ iBandFinit   = 1024         ! final state initial band
+ iBandFfinal  = 1024         ! final state final band
+
+ refBand      = 1025         ! CBM
+ CBMorVBMBand = 1025         ! CBM
+
+/
