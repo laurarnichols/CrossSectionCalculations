@@ -83,4 +83,5 @@ AEXX     = 0.23   ! This is the amount of exact exchanged mixed in, we'll need t
 * I use non-spin-polarized calculations for the perfect crystal and spin-polarized for the defect crystal.
 * We need symmetry turned off (`ISYM=0`) for feeding into the Export code, but for relaxations I leave the symmetry alone for speed.
 * Used `vasp_gam` (gamma-only) version of VASP to speed up HSE calculations. `Export` currently doesn't work properly for gamma-only, but I cut everything out besides the energy stuff because that is all we need. 
+* __Important__: Our code has not been compiled properly on Perlmutter yet. I am in the process of trying to distribute the arrays better to get rid of the seg faults. Those are gone, but the results are not correct, so the code still needs some debugging.
 
