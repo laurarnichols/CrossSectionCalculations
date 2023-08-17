@@ -5,10 +5,11 @@
 * Filled valence bands, empty defect state in both channels, and single carrier in CBM in spin-up channel
 * Didn't need NSCF with 3x3x3 because don't need these wave functions
 
-| Step | Choices | Processors | Time |
-|------|---------|------------|------|
-| Relax | PBE, Gamma, | 308 | 5 hours |
-| SCF | PBE, Gamma, tighter convergence and more bands | 308 | ? < 1 hour |
-| SCF | HSE, Gamma, , `vasp_gam`, tighter convergence and more bands | 616 | ? ~14 hours |
-| Export | PBE, Gamma, `-nb 4` | 220 | 2 minutes |
-| Export | HSE, Gamma, energies only, `-nb 4` | 220 | 1 minute |
+| Step | Functional | KPOINTS | Machine | Processors | Time | Choices |
+|------|------------|---------|---------|------------|------|---------|
+| Relax | PBE | Gamma | Onyx  | 308 | 5 hours | |
+| Relax | PBE | Gamma | Perlmutter  | 384 | ? < 6 hours | |
+| SCF | PBE | Gamma | Onyx | 308 | ? < 1 hour | tighter convergence and more bands |
+| SCF | HSE | Gamma | Onyx | 616 | ? ~14 hours | `vasp_gam`, tighter convergence and more bands |
+| Export | PBE | Gamma | Onyx | 220 | 2 minutes | `-nb 4` |
+| Export | HSE | Gamma | Onyx | 220 | 1 minute | energies only, `-nb 4`
