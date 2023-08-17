@@ -70,7 +70,8 @@ AEXX     = 0.23   ! This is the amount of exact exchanged mixed in, we'll need t
 
 ## Notes
 
-* Relax perfect crystal first with volume relaxation, then use that as starting point to introduce defect 
+* Relax unit cell first to get lattice parameter, then fix lattice parameters in further calculations
+* Relax perfect crystal supercell first, then use that as starting point to introduce defect 
 * For the defect, used the following order of calculations to speed things up:
   * Ground state relax (final charge state/final positions)
   * Use outputs to start excited-state relax (initial charge state)
@@ -82,6 +83,7 @@ AEXX     = 0.23   ! This is the amount of exact exchanged mixed in, we'll need t
 * For relaxations, I use `EDIFF = 1E-5` for speed, then I tighten to `1E-8` for the SCF calculations for better-converged wave functions (see [this forum post by Andy](https://www.vasp.at/forum/viewtopic.php?f=3&t=18050))
 * I use non-spin-polarized calculations for the perfect crystal and spin-polarized for the defect crystal.
 * We need symmetry turned off (`ISYM=0`) for feeding into the Export code, but for relaxations I leave the symmetry alone for speed.
-* Used `vasp_gam` (gamma-only) version of VASP to speed up HSE calculations. `Export` currently doesn't work properly for gamma-only, but I cut everything out besides the energy stuff because that is all we need. 
+* Used `vasp_gam` (gamma-only) version of VASP to speed up HSE calculations. `Export` currently doesn't work properly for gamma-only, but I cut everything out besides the energy stuff because that is all we need.
+* The HSE calculations are faster when using results from a PBE calculation, but you can't use the results from the `vasp_std` version as input to the `vasp_gam` version because it will say `plane wave coefficients changed`. Instead, do a PBE calculation using `vasp_gam` to use as input for the HSE calculations.
 * __Important__: Our code has not been compiled properly on Perlmutter yet. I am in the process of trying to distribute the arrays better to get rid of the seg faults. Those are gone, but the results are not correct, so the code still needs some debugging.
 
