@@ -12,7 +12,7 @@
 | Relax | PBE | Gamma | Perlmutter+Narwhal | 512+384 | 6+1:34 hrs | |
 | SCF | PBE | Gamma | Onyx | 308 | ? < 1 hr | tighter convergence and more bands |
 | SCF | PBE | Gamma | Narwhal | 384 | 11 min. | tighter convergence and more bands |
-| SCF | PBE | Gamma | Warhawk | 384 | 12 min. | from scratch with `vasp_gam`, more bands |
+| SCF | PBE | Gamma | Narwhal | 384 | 12 min. | from scratch with `vasp_gam`, more bands |
 | SCF | HSE | Gamma | Onyx | 616 | ? ~14 hrs | `vasp_gam`, tighter convergence and more bands |
 | Export | PBE | Gamma | Onyx | 220 | 2 min. | `-nb 4` |
 | Export | HSE | Gamma | Onyx | 220 | 1 min. | energies only, `-nb 4`|
