@@ -1,7 +1,16 @@
-# Final charge state, initial positions
+# Neutral charge state, positive positions
 
-* Use relaxed positions from initial charge state
+* Use relaxed positions from positive charge state
 * Do not relax, only SCF/NSCF
+
+| Step | Functional | KPOINTS | Machine | Processors | Time | Notes |
+|------|------------|---------|---------|------------|------|---------|
+| SCF | PBE | Gamma | Perlmutter | 512 | ~6 min. | tighter convergence and more bands |
+| SCF | PBE | Gamma | Narwhal | 384 | 7 min. | from scratch with `vasp_gam`, more bands |
+| SCF | HSE | Gamma | Narwhal | 768 | 7:10 hrs | from PBE results, `vasp_gam`, more bands |
+| Export | HSE | Gamma | Narwhal | 256 | 20 s | energies only, `-nb 4`|
+
+## Original times
 
 | Step | Choices | Processors | Time |
 |------|---------|------------|------|
