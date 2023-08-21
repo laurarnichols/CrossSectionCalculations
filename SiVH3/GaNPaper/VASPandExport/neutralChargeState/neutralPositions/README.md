@@ -11,5 +11,4 @@
 | SCF | PBE | Gamma | Narwhal | 384 | 11 min. | tighter convergence and more bands |
 | SCF | PBE | Gamma | Narwhal | 384 | 12 min. | from scratch with `vasp_gam`, more bands |
 | SCF | HSE | Gamma | Narwhal | 768 | 7:10 hrs | from PBE results, `vasp_gam`, more bands |
-| Export | PBE | Gamma | Onyx | 220 | 2 min. | `-nb 4` |
-| Export | HSE | Gamma | Onyx | 220 | 1 min. | energies only, `-nb 4`|
+| Export | HSE | Gamma | Narwhal | 256 | 20 s | energies only, `-nb 4`|
