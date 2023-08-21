@@ -9,10 +9,12 @@ We need the following main things from the VASP calculations:
 
 ## Tasks
 
-- [ ] [Perfect crystal](./pristine)
-- [ ] [Final charge state/final positions](./finalChargeState/finalPositions)
-- [ ] [Initial charge state](./initialChargeState)
-- [ ] [Final charge state/initial positions](./finalChargeState/initialPositions)
+- [ ] [Perfect crystal](./pristine) _(Still need 3x3x3)_
+- [X] [Neutral charge state relaxed](./neutralChargeState/neutralPositions)
+- [ ] [Negative charge state relaxed](./negativeChargeState/negativePositions) _(Waiting on HSE)_
+- [ ] [Negative charge state, neutral positions](./negativeChargeState/neutralPositions) _(Waiting on HSE)_
+- [ ] [Positive charge state relaxed](./positiveChargeState) _(Waiting on HSE)_
+- [ ] [Neutral charge state, positive positions](./neutralChargeState/positivePositions) _(Still need 3x3x3)_
 
 ## Calculation choices
 
