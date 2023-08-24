@@ -1,15 +1,29 @@
 # H Release
 
-## Algorithm design
+## Algorithm design 1 (simplest/fastest)
 
-Problem setup:
+This algorithm design gives the simplest approach to calculating the H release problem. We can figure out what approximations we might want to refine later.
+
+### Problem Setup
+* Determine when H is "released" and step size to get there
 * VASP and Export
   * Pristine (_wave functions and group velocity_)
-  * Defect relax and SCF (_wave functions_)
+  * Defect relax and SCF (_wave functions and eigenvalues_)
+  * Total energy as a function of H position
+* Energy Tabulator: include the total energy as a function of H position
+* Phonons from relaxed initial state
+* PhononPP: project initial displacement vector on the phonon modes and get shifted positions 
+* First-order matrix element calculation
 
-First step:
-1. Define a small displacement of the H atom
-2. Capture code
+### Algorithm 
+1. PhononPP: project displacement vector on the phonon modes and get shifted positions 
+2. Zeroth- and first-order LSF to get energy transfer rate (need to add energy difference to sum)
+3. Integrate over initial energy with carrier density to get total energy transfer rate (need to figure out what is needed for units to be correct and where the integration stops)
+$$\frac{dE}{dt} = \int n(E_i) P(E_i) dE$$
+  
+### Assumptions
+* Matrix elements do not significantly change as the H migrates away
+* Phonons do not change significantly
 
 ## Questions
 
