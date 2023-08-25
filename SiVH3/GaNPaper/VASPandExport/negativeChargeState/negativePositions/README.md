@@ -4,4 +4,5 @@
 |------|------------|---------|---------|------------|------|---------|
 | Relax | PBE | Gamma | Warhawk | 384 | 3 hrs |  |
 | SCF | PBE | Gamma | Narhwal | 384 | 9 min. | froms scratch with `vasp_gam` |
+| SCF | HSE | Gamma | Narwhal | 768 | 10 hrs | `vasp_gam` |
 
