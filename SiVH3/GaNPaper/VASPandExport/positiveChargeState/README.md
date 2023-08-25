@@ -1,4 +1,4 @@
-# Initial charge state
+# Positive charge state
 
 * Use relaxed geometry from ground-state defect as a starting point
 * WZP method used to make defect positive
