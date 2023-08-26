@@ -16,14 +16,26 @@ This algorithm design gives the simplest approach to calculating the H release p
 * First-order matrix element calculation
 
 ### Algorithm 
-1. PhononPP: project displacement vector on the phonon modes and get shifted positions 
+
+Repeat until the non-hydrogen atomic movements are self-consistent:
+1. PhononPP: project displacement vector on the phonon modes to get $\Delta q_j$  
 2. Zeroth- and first-order LSF to get energy transfer rate (need to add energy difference to sum)
-3. Integrate over initial energy with carrier density to get total energy transfer rate (need to figure out what is needed for units to be correct and where the integration stops)
-$$\frac{dE}{dt} = \int n(E_i) P(E_i) dE$$
+3. Integrate over initial energy with carrier density to get total energy transfer rate (__need to confirm units are correct and figure out where the integration stops__)
+$$\frac{dE}{dt} = \Omega \int n(E_i) P(E_i) dE$$
+4. Use $S_j$ as a weight to split $dE/dt$ across modes to get $dE_j/dt$
+5. Use a map of $E_j$ vs $\Delta q_j$ to convert to $d(\Delta q_j)/dt$ (__need to figure out where/how to get this map__)
+6. Convert to $d (\Delta \mathbf{R})/dt$ using
+$$d (\Delta \mathbf{R})/dt = \sum_j (\Delta q_j)\hat{e}_j,$$
+where $\hat{e}_j$ are the phonon eigenvectors
+7. Scale $d (\Delta \mathbf{R})/dt$ to match the initial set displacement of the hydrogen
+
+Once self-consistency is achieved:
+1. Use the relationship $E_j = \bar{n}_j \hbar \omega_j$ to convert to $d\bar{n}_j/dt$
   
 ### Assumptions
 * Matrix elements do not significantly change as the H migrates away
 * Phonons do not change significantly
+* Energy goes into phonon modes weighted by the Huang-Rhys factor
 
 ## Questions
 
