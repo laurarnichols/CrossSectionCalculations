@@ -47,13 +47,24 @@ Once self-consistency is achieved, capture the following values from the last lo
 
 ## Improvements on assumptions
 
-### Only using total energy as a function of H displacement
+### Total energy
 One of the assumptions in the simple model is to move the H atom away from equilibrium towards being released to map the total energy along the path. The total energy is needed to go into the delta function for energy conservation. This delta function is highly sensitive, so one way to increase the accuracy of our calculations would be to instead recalculate the energy along the way. Here are some options in order of increasing accuracy:
 1. Use the total energy curve from only moving the hydrogen from equilibrium to release
 2. Use the total energy curve from only moving the hydrogen, but only do it $n$ steps at a time, with the starting point including some shifts from other atoms each time
 3. Recalculate the total energy each time step only after self-consistency is reached
 4. Recalculate the total energy of the system at the end of each round of the self-consistent loop to feed into the next loop
 
+### Band eigenvalues
+A related issue to the total energies would be the band eigenvalues. It would be faster to do the total energy calculations with only the default number of bands; however, adding more bands would allow also updating the eigenvalues. Each of the steps listed above (besides the first) can be seen as two steps: including the default number of bands and using the eigenvalues from the previous step or including enough bands to update all of the needed eigenvalues.
+
+### Matrix elements
+For the zeroth-order, the matrix elements are relatively cheap if all of the bands are included. The VASP calculations would need a tighter convergence, and the TME code would need to be run again. The recalculation could be done at any of the frequencies given in the total energy section. For the first-order, however, the matrix elements would very expensive to do any more than 1-3 times per calculation if using a large supercell. This should only be considered if there are significant accuracy issues introduced by using fixed matrix elements.
+
+### Phonons
+The phonons are also relatively expensive (though not as expensive as the first-order matrix elements). Similar to the first-order matrix elements, only recalculate the phonons if significant errors are introduced. If the phonons are recalculated, the first-order matrix elements should be recalculated as well. 
+
+### Energy split up by Huang-Rhys factor
+The choice of using the Huang-Rhys factor as a weight to split the energy into all of the modes, while well-motivated in the theory, is somewhat arbitrary. It guarantees that the modes most-coupled to the movement of the hydrogen dominate, which is the main effect that we wanted to capture.
 
 ## Questions
 
