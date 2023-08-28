@@ -4,16 +4,17 @@
 
 This algorithm design gives the simplest approach to calculating the H release problem. We can figure out what approximations we might want to refine later.
 
-### Problem Setup
-* Determine when H is "released" and step size to get there (__figure out how we will determine when the H is released__)
+### Problem setup
 * VASP and Export
   * Pristine (_wave functions and group velocity_)
   * Defect relax and SCF (_wave functions and eigenvalues_)
   * Total energy as a function of H position
-* Energy Tabulator: include the total energy as a function of H position
+* Determine when H is "released" and step size to get there (__figure out how we will determine when the H is released__)
+* Energy Tabulator: include the total energy as a function of H position 
 * Phonons from relaxed initial state
 * PhononPP: project initial displacement-step vector on the phonon modes and get shifted positions 
 * First-order matrix element calculation
+* Determine the threshold of atomic displacement for self-consistency
 
 ### Algorithm 
 
@@ -38,9 +39,21 @@ Once self-consistency is achieved, capture the following values from the last lo
 6. If it was, end and report $\Delta t_{\text{total}}$. If it wasn't, step the H out by another displacement step and start the loop over.
   
 ### Assumptions
+* The energy of the system as the H migrates away is not significantly impacted by the additional atom movements
+* The band eigenvalues do not significantly change as the H is displaced
 * Matrix elements do not significantly change as the H migrates away
 * Phonons do not change significantly
 * Energy goes into phonon modes weighted by the Huang-Rhys factor
+
+## Improvements on assumptions
+
+### Only using total energy as a function of H displacement
+One of the assumptions in the simple model is to move the H atom away from equilibrium towards being released to map the total energy along the path. The total energy is needed to go into the delta function for energy conservation. This delta function is highly sensitive, so one way to increase the accuracy of our calculations would be to instead recalculate the energy along the way. Here are some options in order of increasing accuracy:
+1. Use the total energy curve from only moving the hydrogen from equilibrium to release
+2. Use the total energy curve from only moving the hydrogen, but only do it $n$ steps at a time, with the starting point including some shifts from other atoms each time
+3. Recalculate the total energy each time step only after self-consistency is reached
+4. Recalculate the total energy of the system at the end of each round of the self-consistent loop to feed into the next loop
+
 
 ## Questions
 
@@ -48,17 +61,5 @@ Once self-consistency is achieved, capture the following values from the last lo
 _Should the final state still be the defect wave functions or should it be the perfect-crystal wave functions?_ It seems to be like the final-state wave functions should stay the defect wave functions. My desire to make the final-state wave function also the perfect-crystal wave function comes from wanting to be consistent with the approximation of the initial-state wave function as the perfect-crystal wave function. However, the two are not treated equivalently in the algebra. The _many-body_ wave functions $|\Psi_l\rangle$ are __not__ approximated as the _many-body_ perfect-crystal wave functions. It is only the single-particle initial state $|\psi_i\rangle$ that gets approximated as the equivalent state in the perfect-crystal. However, the transition from the many-body wave functions to the single-particle wave functions happens after the transformation $$\langle \Psi_{f} | H_1^{\text{BO}} |\Psi_{i}\rangle = \langle\Phi\_f| \Psi\_i\rangle (\tilde{E}\_f - \tilde{E}\_i).$$ Transitioning there gets rid of the potential in the middle of the matrix element and allows us to exploit the orthonormality of the single-particle orbitals. After the transition to the single-particle states, we approximate the initial state as the perfect-crystal state because the carrier is considered as coming from far away from the defect. That justifies why the initial state can be approximated as the perfect-crystal state while the final state ends up as the defect final state.
 
 ### Code design
-_What is the best way to set up this code? Should I just use a bash script to run each of the individual pieces? Or should I try to figure out a way to get everything I need from each part of the program by a subroutine call?_
-
-## Random thoughts
-* Need $\Delta q$ for multiphonon. Can it just be a relaxation of the H stretch mode and/or other dominant defect modes?
-* Could take the route of calculating $\Delta q$ from anharmonicity, but we have tried that route and it is very complicated.
-* Could instead make a map of how much energy the H takes in to how much it will relax. 
-* Two possible $\Delta q$'s: minimum to minimum if it gets over the barrier or new average position if excited anharmonic.
-* How can we get the anharmonic map?
-  * Ignore hits that do not give enough energy to go anharmonic
-  * Move H manually to plot energy profile/barrier
-  * Get H-mode quanta size from phonons
-  * Map each quanta absorption to new max/min positions and a new expectation value of the position 
-  * Treat the phonons as original parabola but centered at the new expectation value (Is this valid? May be needed at least as a first approximation.)
+_What is the best way to set up this code? Should I just use a bash script to run each of the individual pieces? Or should I try to figure out a way to get everything I need from each part of the program by a subroutine call?_ Could update the codes so that a single subroutine is called to get the information needed from that code. In the actual program, the main program would get input from the user, call the main subroutine, then handle writing the information out to files. In the scattering code, the subroutines could then be called to get the required information without writing new files out at every step. This would also avoid having to submit multiple jobs, which would limit total queue time.
  
