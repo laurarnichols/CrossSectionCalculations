@@ -66,6 +66,8 @@ The phonons are also relatively expensive (though not as expensive as the first-
 ### Energy split up by Huang-Rhys factor
 The choice of using the Huang-Rhys factor as a weight to split the energy into all of the modes, while well-motivated in the theory, is somewhat arbitrary. It guarantees that the modes most-coupled to the movement of the hydrogen dominate, which is the main effect that we wanted to capture.
 
+Another potential idea is splitting up the total energy-transfer rate by $P_j$, which comes from running the LSF code with a single mode enabled.
+
 ## Questions
 
 ### Final-state wave function
