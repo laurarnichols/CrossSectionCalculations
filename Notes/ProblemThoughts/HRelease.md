@@ -26,9 +26,11 @@ $$\frac{dE}{dt} = \Omega \int n(E_i) P(E_i) dE$$
 4. Use $S_j$ as a weight to split $dE/dt$ across modes to get $dE_j/dt$
 5. Use a map of $E_j$ vs $\Delta q_j$ to convert to $d(\Delta q_j)/dt$ (__need to figure out where/how to get this map__)
 6. Convert to $d (\Delta \mathbf{R})/dt$ using
-$$d (\Delta \mathbf{R})/dt = \sum_j (\Delta q_j)\hat{e}_j,$$
-where $\hat{e}_j$ are the phonon eigenvectors
-7. Scale $d (\Delta \mathbf{R})/dt$ to match the initial set displacement of the hydrogen (other atoms will now be displaced)
+$$d (\Delta \mathbf{Q})/dt = \sum_j [d(\Delta q_j)/dt] \hat{e}_j,$$
+where $\hat{e}_j$ are the phonon eigenvectors, then
+$$d (\Delta \mathbf{R}\_{ik})/dt = \frac{1}{\sqrt{m_k}} d (\Delta \mathbf{Q}\_{ik})/dt,$$
+where $i$ is the x,y,z index and $k$ is the atom index.
+8. Scale $d (\Delta \mathbf{R})/dt$ to match the initial set displacement of the hydrogen (other atoms will now be displaced)
 
 Once self-consistency is achieved, capture the following values from the last loop:
 1. Use the relationship $E_j = \bar{n}_j \hbar \omega_j$ to convert to $d\bar{n}_j/dt$
