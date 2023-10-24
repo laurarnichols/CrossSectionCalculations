@@ -2,7 +2,7 @@
 
 * Use relaxed geometry from ground-state defect as a starting point
 * WZP method used to make defect positive
-* Filled valence bands, empty defect state in both channels, and single carrier in CBM in spin-up channel
+* Filled valence bands, empty defect state in both channels, and split carrier in CBM in each spin channel
 * Didn't need NSCF with 3x3x3 because don't need these wave functions
 
 | Step | Functional | KPOINTS | Machine | Processors | Time | Choices |

@@ -12,11 +12,11 @@ ALGO   = Normal   ! Davidson algorithm, usually best choice
 NELMIN = 5        ! min electronic steps
 NELM   = 50       ! max electronic steps
 
-ISYM   = 0        ! Turn off k-point symmetry
+ISYM   = -1        ! Turn off k-point symmetry
 ISPIN  = 2        ! Spin polarized calculation: 1 = No, 2 = Yes
 
 ! Parallelization flags
-NCORE = 11        ! Band parallelization, 16 is good for PBE, 4 is good for HSE
+NCORE = 16        ! Band parallelization, 16 is good for PBE, 4 is good for HSE
 KPAR  = 1         ! Set to number of k-point blocks (remember to multiply nodes/procs in jobscript)
 
 ! Ionic control flags
@@ -26,8 +26,8 @@ IBRION = -1       ! Relaxation algorithm, -1 is off, 2 is conjugate gradient
 ! Electronic broadening
 ISMEAR = -2       ! -2 to set occupations manually
 ! Excite electron out of defect into CBM uniformly across k-points
-FERWE = 1023*1 0 1 515*0
-FERDO = 1023*1 517*0
+FERWE = 1023*1 0 0.5 0 534*0
+FERDO = 1023*1 0 0.5 0 534*0
 
 LWAVE  = .TRUE.   ! write out wavefunctions
 LCHARG = .TRUE.   ! write out chargedensity

@@ -4,7 +4,7 @@ ICHARG = 1        ! 2 to start a new job, 1 for continuing and reading in chg
 !INIWAV = 1        ! chooses initially random wf, numerically best
 
 ! Electronic control flags
-NBANDS = 1540     ! Number of bands
+NBANDS = 1536     ! Number of bands
 ENCUT  = 400      ! cutoff energy
 EDIFF  = 1E-5     ! convergence threshold
 PREC   = Normal   ! numerical precision
@@ -30,9 +30,8 @@ IBRION = -1       ! Relaxation algorithm, -1 is off, 2 is conjugate gradient
 
 ! Electronic broadening
 ISMEAR = -2       ! -2 to set occupations manually
-! Excite electron out of defect into CBM uniformly across k-points
-FERWE = 1023*1 0 1 515*0
-FERDO = 1023*1 517*0
+FERWE = 1022*1 1 0 0.5 511*0
+FERDO = 1022*1 1 0 0.5 511*0
 
 LWAVE  = .TRUE.   ! write out wavefunctions
 LCHARG = .TRUE.   ! write out chargedensity
