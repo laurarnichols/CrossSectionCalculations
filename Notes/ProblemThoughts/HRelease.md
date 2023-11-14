@@ -10,7 +10,7 @@ This algorithm design gives the simplest approach to calculating the H release p
   * Defect relax and SCF (_wave functions and eigenvalues_)
   * Total energy as a function of H position
 * Determine when H is "released" and step size to get there (__figure out how we will determine when the H is released__)
-* Energy Tabulator: include the total energy as a function of H position 
+* Energy Tabulator: different run for each displacement step of the H
 * Phonons from relaxed initial state
 * PhononPP: project initial displacement-step vector on the phonon modes and get shifted positions 
 * First-order matrix element calculation
