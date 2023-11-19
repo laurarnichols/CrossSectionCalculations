@@ -1,0 +1,3 @@
+# Group velocity
+
+The group velocity comes from the perfect-crystal band structure. The folders here contain grouped eigenvalues for different base k-points. I confirmed that the velocities for +/- k were the same, so I was already limited to 14 k-points instead of the total 27, but then I realized that all k-points with only one non-zero coordinate were the same, all with two were the same, etc. So I really only have 3 different kinds of group velocities for the different types (0/3, 1, 2). These velocities are given in the `gVelByPatt.txt` file. Then `kTypeIndex.txt` contains the index (0,1,2) for all of the k-points.
