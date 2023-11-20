@@ -1,6 +1,7 @@
 # Pristine
 
-Had to keep switching betwen computers, so multiple times are shown.
+* Used 8x8x8 k-point mesh for conventional unit cell
+* Had to keep switching betwen computers, so multiple times are shown.
 
 | Step | Functional | KPOINTS | Machine | Processors | Time | Choices |
 |------|------------|---------|---------|------------|------|---------|
