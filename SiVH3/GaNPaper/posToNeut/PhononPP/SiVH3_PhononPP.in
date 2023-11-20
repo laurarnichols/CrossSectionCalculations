@@ -1,0 +1,11 @@
+&inputParams
+  initPOSCARFName  = '../../../VASPAndExport/positiveChargeState/PBE/CONTCAR_4x4x4' ! Default: './POSCAR_init', used as based for shifted POSCARs
+  finalPOSCARFName = '../../../VASPAndExport/neutralChargeState/neutralPositions/PBE/CONTCAR_4x4x4' ! Default: './POSCAR_final'
+  phononFName      = '../../../Phonons/mesh.yaml'        ! Default: './mesh.yaml'
+  prefix           = 'ph_POSCAR'              ! Default: './ph_POSCAR'
+  dqFName          = './dq.txt'  ! Default: './dq.txt'
+
+  shift = 0.01                ! Real (Angstrom), default 0.01 A
+
+  generateShiftedPOSCARs = .true.       ! Logical, default .true.
+/
