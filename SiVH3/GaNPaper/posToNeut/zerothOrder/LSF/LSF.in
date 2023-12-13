@@ -1,0 +1,23 @@
+&inputParams
+
+ order = 0
+
+ iSpin = 1 ! Spin channel of interest
+ 
+ energyTableDir = '/pscratch/sd/l/lnichols/SiVH3/GaNPaper/posToNeut/EnergyTabulator/newVersion'
+ matrixElementDir = '/pscratch/sd/l/lnichols/SiVH3/GaNPaper/posToNeut/zerothOrder/TME' 
+ SjInput          = '/pscratch/sd/l/lnichols/SiVH3/GaNPaper/posToNeut/PhononPP/Sj.out' 
+
+ outputDir = './'
+
+ temperature          = 300    ! (K)
+ dt                   = 2.1e-9    ! time step to use (ps) 
+ hbarGamma            = 1.0    ! (meV)
+ smearingExpTolerance = 1d-4    ! tolerance for e^{\gamma t} to determine max time
+
+ iBandIinit  = 1025         ! initial state initial band
+ iBandIfinal = 1088         ! initial state final band
+ iBandFinit  = 1024         ! final state initial band
+ iBandFfinal = 1024         ! final state final band
+
+/
