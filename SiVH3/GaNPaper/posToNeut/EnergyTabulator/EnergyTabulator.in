@@ -1,15 +1,17 @@
 &inputParams
  
- exportDirEigs       = '/p/work/lnichols/SiVH3/GaNPaper/finalChargeState/initialPositions/PBE/gamma/export'
- exportDirInitInit   = '/p/work/lnichols/SiVH3/GaNPaper/initialChargeState/HSE/export' 
- exportDirFinalInit  = '/p/work/lnichols/SiVH3/GaNPaper/finalChargeState/initialPositions/HSE/export' 
- exportDirFinalFinal = '/p/work/lnichols/SiVH3/GaNPaper/finalChargeState/finalPositions/HSE/export' 
+ exportDirEigs       = '/pscratch/sd/l/lnichols/SiVH3/GaNPaper/VASPAndExport/neutralChargeState/positivePositions/PBE/export3x3x3'
+ exportDirInitInit   = '/pscratch/sd/l/lnichols/SiVH3/GaNPaper/VASPAndExport/positiveChargeState/HSE/exportEnergiesOnly' 
+ exportDirFinalInit  = '/pscratch/sd/l/lnichols/SiVH3/GaNPaper/VASPAndExport/neutralChargeState/positivePositions/HSE/exportEnergiesOnly' 
+ exportDirFinalFinal = '/pscratch/sd/l/lnichols/SiVH3/GaNPaper/VASPAndExport/neutralChargeState/neutralPositions/HSE/exportEnergiesOnly' 
 
- outputDir           = './'
+ energyTableDir           = './'
 
  eCorrectTot    = 0.0        ! eV
- eCorrectEigF   = 0.5356     ! eV
  eCorrectEigRef = 0.0        ! eV
+
+ captured = .true.
+ elecCarrier = .true.
 
  iBandIinit   = 1025         ! initial state initial band
  iBandIfinal  = 1088         ! initial state final band
@@ -17,6 +19,5 @@
  iBandFfinal  = 1024         ! final state final band
 
  refBand      = 1025         ! CBM
- CBMorVBMBand = 1025         ! CBM
 
 /
