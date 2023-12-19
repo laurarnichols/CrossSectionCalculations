@@ -9,12 +9,14 @@ We need the following main things from the VASP calculations:
 
 ## Tasks
 
-- [ ] [Perfect crystal](./pristine) _(Still need 3x3x3)_
+- [X] [Perfect crystal](./pristine)
 - [X] [Neutral charge state relaxed](./neutralChargeState/neutralPositions)
-- [ ] [Negative charge state relaxed](./negativeChargeState/negativePositions) _(Waiting on HSE)_
-- [ ] [Negative charge state, neutral positions](./negativeChargeState/neutralPositions) _(Waiting on HSE)_
-- [ ] [Positive charge state relaxed](./positiveChargeState) _(Waiting on HSE)_
-- [ ] [Neutral charge state, positive positions](./neutralChargeState/positivePositions) _(Still need 3x3x3)_
+- [ ] ~[Negative charge state relaxed](./negativeChargeState/negativePositions)~
+- [ ] ~[Negative charge state, neutral positions](./negativeChargeState/neutralPositions)~
+- [X] [Positive charge state relaxed](./positiveChargeState)
+- [X] [Neutral charge state, positive positions](./neutralChargeState/positivePositions)
+
+*Note:* Guanzhi mistakenly did the neutral-to-negative (0/-) transition even though the Barmparis paper only did the positive-to-neutral transition. The original plan was to include Guanzhi's results on the 0/- transition in addition to me calculating the +/0 transition to compare with the Barmparis paper. However, closing in on the end of the year we wanted to go ahead and get the paper submitted, so we decided to drop the 0/- transition (hence why the tasks are struck through above). I have still included the files here from what I have in case it may be useful in the future. 
 
 ## Calculation choices
 
@@ -30,14 +32,13 @@ Here are the choices we have used for supercell and k-point grid:
   * Fewer phonon modes meant fewer first-order calculations
   * Limited by slow speed of current version of `Export` and `TME`
   * May or may not be okay to use smaller set of phonon modes and would be difficult to repeat
-  * I parallelized and optimed `TME` and `Export` so that we could use bigger supercells and all of the phonon modes
+  * I parallelized and optimized `TME` and `Export` so that we could use bigger supercells and all of the phonon modes
 * 4x4x4 supercell at gamma for all calculations
   * Finally got to cross section results, but there were huge gaps in the energy levels
   * Sok and Xiaoguang said that this was due to there no being enough k-points
-* 4x4x4 supercell at gamma for first-order (?) and 3x3x3 grid for zeroth-order
+* 4x4x4 supercell at gamma for first-order and 3x3x3 grid for zeroth-order
   * Xiaoguang suggested that we do a 3x3x3 grid and calculate the cross section for each k-point independently, then smear the final results to combine
   * Seems feasible for the zeroth-order, but I think it may take too long for the first-order
-  * Doing zeroth-order first, then going to estimate how long the first-order will take and try to think if there's a way to make it work for the first-order
 
 
 Guanzhi considered the 0/- transition. He originally considered the ground-state (neutral) defect in the relaxed positions of the neutral defect for all of the matrix elements (initial charge state/initial positions). Technically, because he considers the 0/- transition, his final state for the matrix element should be the negatively-charged defect in the neutral-defect-relaxed positions (final charge state/initial postions); however, Xiaoguang and Sok said that the wave functions probably would not change for the two charge states and that the choice is justified given that the excited-state calculations are so much more difficult to converge (they really aren't for Si, but may be in the future). He later came back and said something about using the final charge state, so he may have switched, but I am not sure.
@@ -76,16 +77,14 @@ AEXX     = 0.23   ! This is the amount of exact exchanged mixed in, we'll need t
 * Relax perfect crystal supercell first, then use that as starting point to introduce defect 
 * For the defect, used the following order of calculations to speed things up:
   * Ground state relax (final charge state/final positions)
-  * Use outputs to start excited-state relax (initial charge state)
-  * Use outputs to start ground-state SCF at excited state positions (final charge state/initial positions)
+  * Use ground-state outputs to start excited-state relax (initial charge state)
+  * Use ground-state outputs to start ground-state SCF at excited state positions (final charge state/initial positions)
 * VASP requires that an SCF calculation follow a relaxation to match the charge density and wave functions to the final positions
 * The `Export` program also assumes that the calculation does not include relaxation steps with multiple energies
 * For an individual system, do relax first, then SCF with tighter convergence, then NSCF for denser grid (if needed)
 * Guanzhi said that he determined that `ENCUT = 400` eV was sufficient for this system, so that is what I will use.
 * For relaxations, I use `EDIFF = 1E-5` for speed, then I tighten to `1E-8` for the SCF calculations for better-converged wave functions (see [this forum post by Andy](https://www.vasp.at/forum/viewtopic.php?f=3&t=18050))
 * I use non-spin-polarized calculations for the perfect crystal and spin-polarized for the defect crystal.
-* We need symmetry turned off (`ISYM=0`) for feeding into the Export code, but for relaxations I leave the symmetry alone for speed.
+* We need symmetry turned off (`ISYM=-1`) for feeding into the Export code, but for relaxations I leave the symmetry alone for speed (mostly affects the perfect crystal where symmetry is not already broken).
 * Used `vasp_gam` (gamma-only) version of VASP to speed up HSE calculations. `Export` currently doesn't work properly for gamma-only, but I cut everything out besides the energy stuff because that is all we need.
 * The HSE calculations are faster when using results from a PBE calculation, but you can't use the results from the `vasp_std` version as input to the `vasp_gam` version because it will say `plane wave coefficients changed`. Instead, do a PBE calculation using `vasp_gam` to use as input for the HSE calculations.
-* __Important__: Our code has not been compiled properly on Perlmutter yet. I am in the process of trying to distribute the arrays better to get rid of the seg faults. Those are gone, but the results are not correct, so the code still needs some debugging.
-
