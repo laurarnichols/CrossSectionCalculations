@@ -12,6 +12,7 @@ NELMIN = 5        ! min electronic steps
 NELM   = 50       ! max electronic steps
 
 ISPIN  = 1        ! Spin polarized calculation: 1 = No, 2 = Yes
+ISYM   = 0
 
 ! Parallelization flags
 NCORE = 16        ! Band parallelization, 16 is good for PBE, 4 is good for HSE
