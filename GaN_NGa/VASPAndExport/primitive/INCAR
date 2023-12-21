@@ -21,7 +21,7 @@ KPAR  = 1         ! Set to number of k-point blocks (remember to multiply nodes/
 EDIFFG = -1E-2    ! Convergence for ionic relaxation
 NSW = 300           ! Number of ionic steps per relaxation job
 IBRION = 2       ! Relaxation algorithm, -1 is off, 2 is conjugate gradient
-ISIF = 2          ! What to relax. 2 does just the internal DOF, 3 does the lattice vectors too
+ISIF = 3          ! What to relax. 2 does just the internal DOF, 3 does the lattice vectors too
 
 ! Electronic broadening
 ISMEAR = 0        ! 0 is Gaussian broadening
