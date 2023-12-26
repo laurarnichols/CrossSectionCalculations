@@ -13,3 +13,13 @@ Lattice parameters are determined based on diagram below:
 <p align="center">
   <img src="The-Wurtzite-structure-of-GaN.png" width="50%">
 </p>
+
+Here are the results for volume relaxing at the PBE level:
+| `ENCUT` | Total E (eV) | Band Gap | a | c | u |
+|------|------------|---------|---------|------------|------|
+| 400 | -24.29584864 | 1.819593 | 3.20032 | 5.20969 | 1.96334 |
+| 520 | -24.30076274 | 1.714369 | 3.21896 | 5.24045 | 1.97545 |
+| 600 | -24.30368614 | 1.714394 | 3.21896 | 5.24045 | 1.97545 |
+| 650 | -24.30747166 | 1.715079 | 3.21896 | 5.24045 | 1.97545 |
+
+Based on those numbers, I would consider the energy cutoff converged at 520 eV. Now going to use this higher cutoff to tune the band gap with HSE.
