@@ -32,3 +32,9 @@ Based on those numbers, I would consider the energy cutoff converged at 520 eV. 
 * With `AEXX=0.29`, the band gap is 3.52 eV and the total energy is -30.44656065 eV. The lattice parameters are $a = 3.17$ A, $c=5.17$ A, and $u=0.377$.
 * The experimental values are $a = 3.19$ A, $c=5.20$ A, and $u=0.377$ (*Semiconductors: Basic Data, edited by O. Madelung, 2nd ed. (Springer, Berlin, 1996).*)
 * I confirmed these parameters with Sok and Xiaoguang on 2023-12-27. Will use this cell as the starting point for creating the supercell and will stick with `AEXX=0.29`.
+
+## Summary
+ I had to go through some trial and error to get the right parameters, but the order to recreate this result is
+ * Relax with `ENCUT=520` eV at the PBE level
+ * Copy `CONTCAR` to `POSCAR` and uncomment HSE with `AEXX=0.29` then relax again (this is all you need to get the geometry)
+ * Copy `CONTCAR` to `POSCAR` and turn off relaxation to do just SCF to update based on final positions (just to get updated energies if you want that)
