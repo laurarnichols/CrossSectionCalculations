@@ -14,12 +14,21 @@ Lattice parameters are determined based on diagram below:
   <img src="The-Wurtzite-structure-of-GaN.png" width="50%">
 </p>
 
-Here are the results for volume relaxing at the PBE level:
-| `ENCUT` | Total E (eV) | Band Gap | a | c | u |
+*Note: $u$ is measured as a fraction of $c$*
+
+Here are the results for volume relaxing at the PBE level (with extra decimal places to show convergence):
+| `ENCUT` | Total E (eV) | Band Gap (eV) | $a$ (A) | $c$ (A) | $u$ |
 |------|------------|---------|---------|------------|------|
-| 400 | -24.29584864 | 1.819593 | 3.20032 | 5.20969 | 1.96334 |
-| 520 | -24.30076274 | 1.714369 | 3.21896 | 5.24045 | 1.97545 |
-| 600 | -24.30368614 | 1.714394 | 3.21896 | 5.24045 | 1.97545 |
-| 650 | -24.30747166 | 1.715079 | 3.21896 | 5.24045 | 1.97545 |
+| 400 | -24.29584864 | 1.819593 | 3.20032 | 5.20969 | 0.37686 |
+| 520 | -24.30076274 | 1.714369 | 3.21896 | 5.24045 | 0.37686 |
+| 600 | -24.30368614 | 1.714394 | 3.21896 | 5.24045 | 0.37686 |
+| 650 | -24.30747166 | 1.715079 | 3.21896 | 5.24045 | 0.37686 |
+
+*Note: There was no change in the CONTCAR between 520-650 eV cutoff.*
 
 Based on those numbers, I would consider the energy cutoff converged at 520 eV. Now going to use this higher cutoff to tune the band gap with HSE.
+
+* Relaxed with `AEXX=0.30` and got a band gap of 3.59 eV
+* With `AEXX=0.29`, the band gap is 3.52 eV and the total energy is -30.44656065 eV. The lattice parameters are $a = 3.17$ A, $c=5.17$ A, and $u=0.377$.
+* The experimental values are $a = 3.19$ A, $c=5.20$ A, and $u=0.377$ (*Semiconductors: Basic Data, edited by O. Madelung, 2nd ed. (Springer, Berlin, 1996).*)
+* I confirmed these parameters with Sok and Xiaoguang on 2023-12-27. Will use this cell as the starting point for creating the supercell and will stick with `AEXX=0.29`.
