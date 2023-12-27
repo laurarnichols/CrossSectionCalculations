@@ -35,6 +35,6 @@ Based on those numbers, I would consider the energy cutoff converged at 520 eV. 
 
 ## Summary
  I had to go through some trial and error to get the right parameters, but the order to recreate this result is
- * Relax with `ENCUT=520` eV at the PBE level
+ * Relax with `ENCUT=520` eV at the PBE level with a 5x5x3 k-point mesh
  * Copy `CONTCAR` to `POSCAR` and uncomment HSE with `AEXX=0.29` then relax again (this is all you need to get the geometry)
  * Copy `CONTCAR` to `POSCAR` and turn off relaxation to do just SCF to update based on final positions (just to get updated energies if you want that)
