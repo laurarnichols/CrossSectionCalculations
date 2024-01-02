@@ -1,4 +1,6 @@
-# Primitive relaxation
+# Primitive cell 
+
+## Relaxation
 
 * First step in setting up the supercell is volume relaxing the primitive unit cell.
 * Based on parameters from Andy from working with GaN before, I used a 5x5x3 k-point mesh to relax.
@@ -33,8 +35,12 @@ Based on those numbers, I would consider the energy cutoff converged at 520 eV. 
 * The experimental values are $a = 3.19$ A, $c=5.20$ A, and $u=0.377$ (*Semiconductors: Basic Data, edited by O. Madelung, 2nd ed. (Springer, Berlin, 1996).*)
 * I confirmed these parameters with Sok and Xiaoguang on 2023-12-27. Will use this cell as the starting point for creating the supercell and will stick with `AEXX=0.29`.
 
-## Summary
+### Summary
  I had to go through some trial and error to get the right parameters, but the order to recreate this result is
  * Relax with `ENCUT=520` eV at the PBE level with a 5x5x3 k-point mesh
  * Copy `CONTCAR` to `POSCAR` and uncomment HSE with `AEXX=0.29` then relax again (this is all you need to get the geometry)
  * Copy `CONTCAR` to `POSCAR` and turn off relaxation to do just SCF to update based on final positions (just to get updated energies if you want that)
+
+ ## DOS and PDOS
+
+ Based on my understanding of what I'm reading online, setting `LORBIT=11` will give the necessary information needed to get the DOS and PDOS. With versions prior to VASP 6, there is an issue with the symmetrization of the partial charge density, so it is recommended on the [known issues page](https://www.vasp.at/wiki/index.php/Known_issues) to do an SCF calculation with symmetry turned on, then do the DOS calculation (`LORBIT=11`) with symmetry turned off (`ISYM=0`) and the wave functions not output (`LWAVE=.FALSE.`). I then used [`vaspkit`](https://vaspkit.com/) to get the DOS and PDOS plots. I used `ICHARG=11` with a 10x10x6 k-point mesh just to make sure I had enough k-points. The primitive cell is super quick, but I will likely need to test the convergence in the defect supercell. The resulting plots are shown in [my analysis notebook](../../GaN_NGa%20General%20Analysis.ipynb).
