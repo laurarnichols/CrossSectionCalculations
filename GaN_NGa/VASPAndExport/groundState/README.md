@@ -2,7 +2,7 @@
 
 ## 3x2x2 supercell
 
-I started from the [relaxed pristine supercell](../pristine/) and removed a Ga atom 7 near the center of the cell (`0.500000000         0.583333313         0.499429911`), replaced it with a N atom (cut and pasted it to the bottom of the file and updated the atom numbers), then shifted the N position slightly to break the symmetry. Going to relax and make sure that the N atom doesn't go back to the higher-symmetry position. 
+I started from the [relaxed pristine supercell](../pristine/) and removed Ga atom 7 near the center of the cell (`0.500000000         0.583333313         0.499429911`), replaced it with a N atom (cut and pasted it to the bottom of the file and updated the atom numbers), then shifted the N position slightly to break the symmetry. Going to relax and make sure that the N atom doesn't go back to the higher-symmetry position. 
 
 I kept the $\Gamma$-only k-point mesh but turned spin polarization on for the defect supercell. Only relaxed the inner DOF.
 
@@ -21,3 +21,7 @@ The N$\ _2$ bond length is 1.09 A, so I guess they are just saying that the atom
 But if I relax the system without shifting first, I still get to a configuration that breaks symmetry, just not as much. The N atoms that are close to each other (atoms 55 and 96) in the other configuration actually end up in the same positions, but there is an additional atom (76) close to the N antisite, also with a smaller bond length at 1.44 A. This configuration has a smaller energy than the first, but it does not line up with the paper.
 
 I showed the new configuration to Sok and he said it could be feasible that I could find a new lower-energy configuration because computers are more powerful now, but he suggested using a larger supercell size for higher accuracy, so I moved to using the 5x3x3 supercell.
+
+## 5x3x3 supercell
+
+Similar to the 3x2x2 supercell, I relaxed the pristine cell then removed Ga atom 167 near the center of the supercell (`0.60000   0.44445   0.49968`) and replaced it with a N atom. To start, I am not going to break the symmetry before relaxing to see if I will get a similar configuration to what I saw in the 96-atom supercell. 
