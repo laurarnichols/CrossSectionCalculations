@@ -24,4 +24,14 @@ I showed the new configuration to Sok and he said it could be feasible that I co
 
 ## 5x3x3 supercell
 
-Similar to the 3x2x2 supercell, I relaxed the pristine cell then removed Ga atom 167 near the center of the supercell (`0.60000   0.44445   0.49968`) and replaced it with a N atom. To start, I am not going to break the symmetry before relaxing to see if I will get a similar configuration to what I saw in the 96-atom supercell. 
+Similar to the 3x2x2 supercell, I relaxed the pristine cell then removed Ga atom 167 near the center of the supercell (`0.60000   0.44445   0.49968`) and replaced it with a N atom. To start, I am not going to break the symmetry before relaxing to see if I will get a similar configuration to what I saw in the 96-atom supercell. For consistency, I will name this `POSCAR2_5x3x3`.
+
+In anticipation of the larger supercell taking a lot longer, I switched to using the $\Gamma$-only compilation of VASP for the relaxation. There is no loss of accuracy; it just takes into account simplifications available with just the $\Gamma$ point. Our `Export` code is not yet implemented to get the wave functions for $\Gamma$-only, so we will need to either implement that or use the standard version to get the wave functions. Implementing that will be one of my top priorities moving forward.
+
+| Start | End | Energy (eV) | Description |
+|-------|-----|-------------|-------------|
+| [`POSCAR2_5x3x3`](./POSCAR2_5x3x3) | [`CONTCAR2_5x3x3`](./CONTCAR2_5x3x3) | -2182.20953186 | Relax without shifting |
+
+Resulting geometry without shifting is similar to that seen in the 96-atom supercell, with the central N being bonded closely to two other N atoms at distances 1.44 and 1.45 A.
+
+I also set up a shifted version of the larger supercell, where the N antisite atom is shifted by a small amount away from the high-symmetry position (same direction and magnitude as in the smaller supercell). 
