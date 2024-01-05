@@ -35,6 +35,30 @@ In anticipation of the larger supercell taking a lot longer, I switched to using
 
 Resulting geometry without shifting is similar to that seen in the 96-atom supercell, with the central N being bonded closely to two other N atoms at distances 1.44 and 1.45 A.
 
-I also set up a shifted version of the larger supercell, where the N antisite atom is shifted by a small amount away from the high-symmetry position (`-0.01 0.01 -0.02` in direct coordinates). Just as in the smaller supercell, the displaced version ends up with a geometry matching that in the literature, with two N atoms close together at a distance of 1.26 A. However, in the smaller supercell and in the literature, the pair of atoms points in the c direction, while the pair in my system points along the original Ga-N bond direction, with the Ga replaced by the antisite N atom and the bond length shortened. 
+I also set up a shifted version of the larger supercell, where the N antisite atom is shifted by a small amount away from the high-symmetry position (`-0.01 0.01 -0.02` in direct coordinates). Just as in the smaller supercell, the displaced version ends up with a geometry matching that in the literature, with two N atoms close together at a distance of 1.26 A. However, in the smaller supercell and in the literature, the pair of atoms points in the c direction, while the pair in my system points along a different Ga-N bond direction (closer to the b direction). 
 
-To see if this change is responsible for the 2-atom configuration being lower in the larger supercell as compared to the smaller supercell, I set up the resulting configuration of the N atoms from the smaller supercell and the literature in the larger supercell. 
+I feel like this should be equivalent because it is just bonding to another one of the originally-coordinated atoms. To check if this change is responsible for the 2-atom configuration being lower in the larger supercell as compared to the smaller supercell, I set up the resulting configuration of the N atoms from the smaller supercell and the literature in the larger supercell. 
+
+## Matching configuration
+
+To start, I am checking how the two N atoms that are bonded in the first result of the 3x2x2 supercell shift relative to the *unshifted* positions. 
+
+N antisite: 
+* Unshifted position: $(4.76728, 6.41928, 5.16121)$
+* Final position: $(4.76836, 6.41809, 5.56490)$
+* Shift: $(0.00108, -0.00119, 0.40369)$
+
+Other N:
+* Unshifted position: $(4.76728, 6.42477, 7.10824)$
+* Final position: $(4.76813, 6.41636, 6.83563)$
+* Shift: $(0.00085, -0.00841, -0.27261)$
+
+Now I take the equivalent atoms in the larger supercell and apply the same shift to them.
+
+N antisite (360):
+* Unshifted position: $(9.53456, 7.33981, 7.74415)$
+* New starting position: $(9.53564, 7.33862, 8.14784)$
+
+Other N (346):
+* Unshifted position: $(9.53456, 7.33969, 9.69138)$
+* New starting position: $(9.53541, 7.33128, 9.41877)$
