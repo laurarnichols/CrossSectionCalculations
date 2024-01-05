@@ -2,7 +2,7 @@
 
 ## 3x2x2 supercell
 
-I started from the [relaxed pristine supercell](../pristine/) and removed Ga atom 7 near the center of the cell (`0.500000000         0.583333313         0.499429911`), replaced it with a N atom (cut and pasted it to the bottom of the file and updated the atom numbers), then shifted the N position slightly to break the symmetry. Going to relax and make sure that the N atom doesn't go back to the higher-symmetry position. 
+I started from the [relaxed pristine supercell](../pristine/) and removed Ga atom 7 near the center of the cell (`0.500000000         0.583333313         0.499429911`), replaced it with a N atom (cut and pasted it to the bottom of the file and updated the atom numbers), then shifted the N position slightly (`-0.01 0.01 -0.02` in direct coordinates) to break the symmetry. Going to relax and make sure that the N atom doesn't go back to the higher-symmetry position. 
 
 I kept the $\Gamma$-only k-point mesh but turned spin polarization on for the defect supercell. Only relaxed the inner DOF.
 
@@ -30,8 +30,11 @@ In anticipation of the larger supercell taking a lot longer, I switched to using
 
 | Start | End | Energy (eV) | Description |
 |-------|-----|-------------|-------------|
+| [`POSCAR1_5x3x3`](./POSCAR1_5x3x3) | [`CONTCAR1_5x3x3`](./CONTCAR1_5x3x3) | -2182.24869595 | Shift before relaxing |
 | [`POSCAR2_5x3x3`](./POSCAR2_5x3x3) | [`CONTCAR2_5x3x3`](./CONTCAR2_5x3x3) | -2182.20953186 | Relax without shifting |
 
 Resulting geometry without shifting is similar to that seen in the 96-atom supercell, with the central N being bonded closely to two other N atoms at distances 1.44 and 1.45 A.
 
-I also set up a shifted version of the larger supercell, where the N antisite atom is shifted by a small amount away from the high-symmetry position (same direction and magnitude as in the smaller supercell). 
+I also set up a shifted version of the larger supercell, where the N antisite atom is shifted by a small amount away from the high-symmetry position (`-0.01 0.01 -0.02` in direct coordinates). Just as in the smaller supercell, the displaced version ends up with a geometry matching that in the literature, with two N atoms close together at a distance of 1.26 A. However, in the smaller supercell and in the literature, the pair of atoms points in the c direction, while the pair in my system points along the original Ga-N bond direction, with the Ga replaced by the antisite N atom and the bond length shortened. 
+
+To see if this change is responsible for the 2-atom configuration being lower in the larger supercell as compared to the smaller supercell, I set up the resulting configuration of the N atoms from the smaller supercell and the literature in the larger supercell. 
