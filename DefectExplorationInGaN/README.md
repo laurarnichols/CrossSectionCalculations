@@ -8,4 +8,11 @@ The files for my calculations with the N antisite defect are in the [GaN_NGa](./
 
 I brought up with the group, however, that the formation of the antisite is very large--so much so that many papers do not consider it in detail. This is an issue because we want to be able to compare with experiment, not just do a toy problem. I proposed a few other alternatives and we landed on the O substitutional defect on a N site as the formation energy is low and there is threshold-voltage-shift data attributed to that defect.
 
+## $\text{O}_\text{N}$ substitutional defect
 
+The next steps are
+* Relax defect
+* Calculate neutral-state formation energy
+* Look at neutral state DOS and PDOS
+* Set up and relax positive-state defect with WZP
+* Calculate formation energy for positive charge state
