@@ -50,4 +50,6 @@ LPARD = .TRUE.
 LSEPB = .TRUE.
 IBAND = N1 N2 ...
 ```
-where the `N`'s are the band indices you want to look at. Andy created a script to fix formatting issues that sometimes arise and split the charge density into spin channels. Both python scripts can be found in the [`Tools` folder of the `defectCrossSections`](https://github.com/laurarnichols/defectCrossSections/tree/a16a86926f5b1d08ee571c8cd404b545f3a428ac/Tools) repo that holds our main code.
+where the `N`'s are the band indices you want to look at. *Note: the wave function must already be converged from a previous calculation.*
+
+Andy created a script to fix formatting issues that sometimes arise and split the charge density into spin channels. Both python scripts can be found in the [`Tools` folder of the `defectCrossSections`](https://github.com/laurarnichols/defectCrossSections/tree/a16a86926f5b1d08ee571c8cd404b545f3a428ac/Tools) repo that holds our main code. 
