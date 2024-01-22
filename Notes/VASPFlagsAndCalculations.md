@@ -1,8 +1,6 @@
 # VASP Flags and Calculations
 
-## Specific Calculations
-
-### Relaxation
+## Relaxation
 
 * Start a new calculation from scratch: `ISTART=0`, `ICHARG=2`, `INIWAV=1`
 * Turn on relaxation: `IBRION=2`
@@ -23,7 +21,7 @@
     * Rerun the job
 * Write out the wave function and charge density for subsequent scf calculation: `LWAVE=.TRUE.`, `LCHARG=.TRUE.`
 
-### SCF
+## SCF
 
 * Always do an scf calculation after a relaxation to calculate the charge density from the final atomic positions
 * VASP does electronic portion then moves the atoms, so you need to manually do the electronic portion after relaxation
@@ -39,6 +37,17 @@
 * For HSE, cannot do an NSCF calculation because of how the exact exchange is calculated
 * Everything is the same as SCF, except `ICHARG=11`
 
-### HSE
+## HSE
 
 You can do relaxations or SCF calculations at the HSE level for better accuracy. The mixing parameter should be tuned to match the experimental band gap. For detailed notes on hybrid-functional theory and calculations see the [hybrid theory and calculations](hybridTheoryAndCalculations.md) note.
+
+
+## Band-decomposed charge densities
+
+In VASP, use:
+```fortran
+LPARD = .TRUE.
+LSEPB = .TRUE.
+IBAND = N1 N2 ...
+```
+where the `N`'s are the band indices you want to look at. Andy created a script to fix formatting issues that sometimes arise and split the charge density into spin channels. Both python scripts can be found in the [`Tools` folder of the `defectCrossSections`](https://github.com/laurarnichols/defectCrossSections/tree/a16a86926f5b1d08ee571c8cd404b545f3a428ac/Tools) repo that holds our main code.
