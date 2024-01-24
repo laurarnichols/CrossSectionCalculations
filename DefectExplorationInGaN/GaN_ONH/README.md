@@ -11,6 +11,7 @@ We will be considering the hydrogenated oxygen substitutional defect on a nitrog
 | Disp. H $[0, 0, 1]$ | -2183.67306109 | 1.52 |
 | H $[0, 0, -1]$ | -2182.68135444 | 0.99 |
 | `DX_Hup` | -2183.67286721 | 1.52 |
+| `DX_Hdown` | -2182.64302866 | 1.01 |
 
 For the non-displaced geometries, we see that there are three energy-degenerate sites across from the equivalent Ga-O bonds (the three that are slightly shorter). The position across from the Ga-O bond in the $c$-direction is higher in energy. 
 
@@ -20,4 +21,4 @@ The geometry with the H along the Ga-O in the $c$-direction is the lowest energy
 
 Even though I was initially confused on how to set up the $DX$ center geometry because there were no axes given in the Puzyrev 2014 Gate paper, the displaced-oxygen configuration actually did result in the O relaxing into the $DX$ center geometry. However, the H is not bonded to the O, it is instead bonded to the Ga with the dangling bond towards the N vacancy that is left behind when the O shifts away. After talking with Sok, I want to try two configurations: one with H on the other side of O as the Puzyrev 2014 Gate paper had in AlGaN (`DX_Hdown`) and one with the H on the side that it is now but bonded to the O (`DX_Hup`). 
 
-The geometry with the H on the side of the previous Ga bond relaxes to the same configuration with the H bonded to the Ga. 
+The geometry with the H on the side of the previous Ga bond relaxes to the same configuration with the H bonded to the Ga. The geometry with the H angled down is the higher-energy configuration corresponding to one of the non-bonding locations. It seems clear that the configuration where H is bonding to Ga is the actual configuration. Next step is to look at the H migration path and find the barrier.
