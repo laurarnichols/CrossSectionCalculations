@@ -1,24 +1,25 @@
 # Hydrogenated $\text{O}_{\text{N}}$ Substitutional Defect in $\text{GaN}$
 
-We will be considering the hydrogenated oxygen substitutional defect on a nitrogen site for our first pass at the hydrogen release problem. First, I need to determine where the H prefers to sit. I set up four different H positions opposite the bonding Ga atoms. I labeled the bond directions $[-1, -1, -1]$, $[0, 0, 1]$, $[0, 1, -1]$, and $[1, -1, -1]$, based on the direction of the H relative to the O. *These planes are not right on line, but they give a clear distinction between the different positions. If we talk about them, we may want to be more precise.* For the H in the c-direction, I also set up a displaced geometry where the O is shifted as in the $DX$ center geometry seen in AlGaN. I don't expect the added H to stabilize this geometry in GaN, but I wanted to try just in case. 
+Energies of all configurations tried in order of increasing energy (details given below):
 
-| Start Geometry | Total E (eV) | O-H bond length (A) |
+| Start Geometry | Total E (eV) | Bond length (A) |
 |------|------------|----------|
-| H $[0, 0, 1]$ | -2182.45864032 | 1.00 |
-| H $[0, 1, -1]$ | -2182.64179046 | 1.01 |
-| H $[-1,-1,-1]$ | -2182.64336409 | 1.01 |
-| H $[1,-1,-1]$ | -2182.64327529 | 1.01 |
-| Disp. H $[0, 0, 1]$ | -2183.67306109 | 1.52 |
-| H $[0, 0, -1]$ | -2182.68135444 | 0.99 |
-| `DX_Hup` | -2183.67286721 | 1.52 |
-| `DX_Hdown` | -2182.64302866 | 1.01 |
+| DX disp. along eig. | -2184.15514066 | not bonded |
+| Disp. H $[0, 0, 1]$ | -2183.67306109 | 1.52 (Ga-H) |
+| `DX_Hup` | -2183.67286721 | 1.52 (Ga-H) |
+| H bond $[0, 0, -1]$ | -2182.68135444 | 0.99 (O-H) |
+| H antibond $[-1,-1,-1]$ | -2182.64336409 | 1.01 (O-H) |
+| H antibond $[1,-1,-1]$ | -2182.64327529 | 1.01 (O-H) |
+| `DX_Hdown` | -2182.64302866 | 1.01 (O-H) |
+| H antibond $[0, 1, -1]$ | -2182.64179046 | 1.01 (O-H) |
+| H antibond $[0, 0, 1]$ | -2182.45864032 | 1.00 (O-H) |
 
-For the non-displaced geometries, we see that there are three energy-degenerate sites across from the equivalent Ga-O bonds (the three that are slightly shorter). The position across from the Ga-O bond in the $c$-direction is higher in energy. 
+Our plan was to consider the oxygen substitutional defect on a nitrogen site for the first pass at the hydrogen release problem. Before doing the scattering problem, I sought to find the most optimal geometry for the hydrogenated defect. 
 
-In the 2004 Van de Walle review paper, however, they point out two potential positions for H depending on its charge state: in the antibonding position in the hexagonal channel (as in the three equivalent positions above) for H$^-$ or along the Ga bond in the $c$-direction. Those results were for a N atom, so I am going to test the bond-center site with the O as well (`nonDisp_00-1`).
+I started by considering the H bonded with the O in the direction of each of the antibonding sites (labeled by the planes that the displacements approximately line up with). I also considered the position along the longest Ga-O bond (along the $c$-direction), which ended up being the configuration with the lowest energy that included the H still bonding to the O. 
 
-The geometry with the H along the Ga-O in the $c$-direction is the lowest energy configuration with the O-H bond and matches the expected location of H based on previous results in GaN. 
+There was also a lot of talk in the literature about the potential $DX$-center geometry of the O substitutional defect under certain conditions, so I wanted to also consider that geometry. I started with the geometry labeled "Disp. H" because I thought the O was displaced into the $DX$-like position with the H bonded to it. That wasn't actually correct, but displacing the O led to the system bouncing back and forth and ultimately relaxing to the actual $DX$-center configuration with the H now bonded to the Ga that the O migrated away from. 
 
-Even though I was initially confused on how to set up the $DX$ center geometry because there were no axes given in the Puzyrev 2014 Gate paper, the displaced-oxygen configuration actually did result in the O relaxing into the $DX$ center geometry. However, the H is not bonded to the O, it is instead bonded to the Ga with the dangling bond towards the N vacancy that is left behind when the O shifts away. After talking with Sok, I want to try two configurations: one with H on the other side of O as the Puzyrev 2014 Gate paper had in AlGaN (`DX_Hdown`) and one with the H on the side that it is now but bonded to the O (`DX_Hup`). 
+Just to be safe, I used the actual $DX$-center configuration as the starting point and put the H on either side of the O (up/$+c$ and down/$-c$). The down position relaxed to the antibonding position, so it was not energetically favorable. The up position relaxed to the same configuration found previously with O at the $DX$ site and H bonded to the Ga left behind. This configuration is almost 1 eV lower in energy than the other configurations, so we decided to use that moving forward. 
 
-The geometry with the H on the side of the previous Ga bond relaxes to the same configuration with the H bonded to the Ga. The geometry with the H angled down is the higher-energy configuration corresponding to one of the non-bonding locations. It seems clear that the configuration where H is bonding to Ga is the actual configuration. Next step is to look at the H migration path and find the barrier.
+However, once I calculated the phonons, I found a mode with a negative frequency, indicating that the configuration was unstable. I displaced the atoms along that eigenvector then re-relaxed and got a new configuration that was 0.5 eV lower in energy. This resulting geometry has H in the hexagonal channel not bonded to any of the other atoms, so it is not a straightforward use case for the H release problem. We are going to try using another defect. 
