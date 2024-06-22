@@ -22,4 +22,6 @@ smearingExpTolerance = 1e-5
 ```
 based on the numbers given in the paper (I will not retest the convergence of these parameters). I will also need to run this for `temperature = 50,100,200,300,400,500,600,700,800` (estimated temperatures that Guanzhi used based on the plot).
 
-Rather than calculate them from scratch, Guanzhi sent me the relaxed excited-state positions and the initial and final phonons. At first glance of the files, I realized that we could not combine the phonons as-given because the modes are sorted by increasing frequency and they do not line up between the files. I am going to update the `PhononPP` code to line up the modes properly by maximizing the dot product bewteen the phonon eigenvectors.
+Rather than calculate them from scratch, Guanzhi sent me the relaxed excited-state positions and the initial and final phonons. At first glance of the files, I realized that we could not combine the phonons as-given because the modes are sorted by increasing frequency and they do not line up between the files. I have updated the `PhononPP` code to line up the modes properly by maximizing the dot product bewteen the phonon eigenvectors. I tested it using the Si inputs, with the same phonon file input twice, and it worked as expected: dot product with the same mode is 1 and with other modes is 0. 
+
+As a check, I will recalculate the total energy for the excited-state positions that Guanzhi sent.
