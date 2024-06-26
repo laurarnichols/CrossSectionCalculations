@@ -8,7 +8,11 @@ ISYM = -1
 AEXX = 0.31
 ```
 
-I asked Guanzhi what he did to get the $\Gamma$-only HSE wave functions since HSE does not allow for an NSCF calculation. He said that he used the 2x2x2 MP relaxed positions and did a $\Gamma$ SCF calculation. Xiaoguang said this was not correct. Instead, I did an SCF calculation with the 2x2x2 MP k-points listed explicitly and added $\Gamma$ with zero weight. Since I already did this for the pristine supercell and the ground-state relaxed positions, I will not need to recalculate those. 
+I asked Guanzhi what he did to get the $\Gamma$-only HSE wave functions since HSE does not allow for an NSCF calculation. He said that he used the 2x2x2 MP relaxed positions and did a $\Gamma$ SCF calculation. Xiaoguang said this was not correct. Instead, he said that we should do an SCF calculation with the 2x2x2 MP k-points listed explicitly and added $\Gamma$ with zero weight. 
+
+We went back and forth on this because doing 2x2x2 MP plus zero-weight $\Gamma$ was not feasible for the first-order term. We said that we definitely need to do 2x2x2 MP for the relaxation and phonons. Alkauskas *et al.* used $\Gamma$-only for their matrix elements, so we feel okay using that for our first-order term. Guanzhi did see differences in the overlaps for the zeroth-order term (zero overlap between the defect level and the top two valence bands with $\Gamma$-only), but Xiaoguang said that he thinks that the difference would be less for the first-order term because we are looking at overlaps between slightly displaced defect wave functions. So for the first-order term we use $\Gamma$-only displaced and non-displaced wave functions, and for the zeroth-order term we use 2x2x2 MP plus zero-weight $\Gamma$ wave functions. The eigenvalues come from the ground state system in the initial relaxed positions with 2x2x2 MP plus zero-weight $\Gamma$. All calculations are done at the HSE level.
+
+When combining the final results, Alkauskas *et al.* used a mean square average to combine the numbers from the bands. Guanzhi is using the Boltzmann-distribution-weighted average. Should we use the same thing as Alkauskas *et al.*? 
 
 ## Zeroth-order 
 
