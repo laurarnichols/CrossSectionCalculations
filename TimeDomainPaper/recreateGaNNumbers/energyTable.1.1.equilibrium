@@ -1,0 +1,13 @@
+# Energies tabulated for capture? Alternative is scattering.)
+   T
+# Total number of transitions, Initial States (bandI, bandF), Final State (band) Format : '(5i10)'
+         3       190       192       192
+# Total-energy difference (Hartree). Format: '(ES24.15E3)'
+# With relaxation (for delta function)
+ -4.308201178000000E-002
+# Electronic only without relaxation (for zeroth-order matrix element)
+ -2.930724045900000E-002
+# Final Band, Initial Band, Delta Function (Hartree), Zeroth-order (Hartree), First-order (Hartree), Plotting (eV) Format : '(2i10,4ES24.15E3)'
+    190 -4.308201178000000E-002 -2.930724045900000E-002  2.321719480500000E-002
+    191 -2.691976871800000E-002 -1.314499739700000E-002  7.055135489900000E-003
+    192 -2.433809185900000E-002 -1.056332053800000E-002  4.473274884700000E-003
